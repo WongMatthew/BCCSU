@@ -28,14 +28,14 @@ prompt APPLICATION 120 - BCCSU
 -- Application Export:
 --   Application:     120
 --   Name:            BCCSU
---   Date and Time:   11:49 Monday June 5, 2023
+--   Date and Time:   12:09 Monday June 5, 2023
 --   Exported By:     MWONG
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                      4
 --       Items:                   38
 --       Processes:                6
---       Regions:                 19
+--       Regions:                 23
 --       Buttons:                  5
 --       Dynamic Actions:          2
 --     Shared Components:
@@ -112,7 +112,7 @@ wwv_flow_imp.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'BCCSU'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230605114435'
+,p_last_upd_yyyymmddhh24miss=>'20230605120816'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>4
 ,p_print_server_type=>'INSTANCE'
@@ -14440,7 +14440,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230605114435'
+,p_last_upd_yyyymmddhh24miss=>'20230605120816'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(36529340393850276)
@@ -14612,6 +14612,52 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_template=>wwv_flow_imp.id(36424165183850195)
 ,p_plug_display_sequence=>20
 ,p_plug_display_point=>'SUB_REGIONS'
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(36705435054029934)
+,p_plug_name=>'Trail Making Test'
+,p_parent_plug_id=>wwv_flow_imp.id(36702588185029905)
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_imp.id(36424165183850195)
+,p_plug_display_sequence=>70
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(36705627987029936)
+,p_plug_name=>'Part A'
+,p_parent_plug_id=>wwv_flow_imp.id(36705435054029934)
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_imp.id(36424165183850195)
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'SUB_REGIONS'
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(36705713015029937)
+,p_plug_name=>'Part B'
+,p_parent_plug_id=>wwv_flow_imp.id(36705435054029934)
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_imp.id(36424165183850195)
+,p_plug_display_sequence=>20
+,p_plug_display_point=>'SUB_REGIONS'
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(36706038655029940)
+,p_plug_name=>'WAIS-III Letter-Number Sequencing'
+,p_parent_plug_id=>wwv_flow_imp.id(36702588185029905)
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_imp.id(36424165183850195)
+,p_plug_display_sequence=>80
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
@@ -15135,7 +15181,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(36704816263029928)
 ,p_item_source_plug_id=>wwv_flow_imp.id(36529340393850276)
-,p_prompt=>'Dominant Time Complete'
+,p_prompt=>'Time to complete = _____ seconds'
 ,p_source=>'DOMINANT_TIME_COMPLETE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_NUMBER_FIELD'
@@ -15154,7 +15200,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(36704816263029928)
 ,p_item_source_plug_id=>wwv_flow_imp.id(36529340393850276)
-,p_prompt=>'Dominant Pegs Complete'
+,p_prompt=>'Number of pegs complete = _____ pegs'
 ,p_source=>'DOMINANT_PEGS_COMPLETE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_NUMBER_FIELD'
@@ -15173,7 +15219,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(36704816263029928)
 ,p_item_source_plug_id=>wwv_flow_imp.id(36529340393850276)
-,p_prompt=>'Dominant Pegs Dropped'
+,p_prompt=>'Number of pegs dropped = _____ pegs'
 ,p_source=>'DOMINANT_PEGS_DROPPED'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_NUMBER_FIELD'
@@ -15192,7 +15238,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(36704949850029929)
 ,p_item_source_plug_id=>wwv_flow_imp.id(36529340393850276)
-,p_prompt=>'Non Dominant Time Complete'
+,p_prompt=>'Time to complete = _____ seconds'
 ,p_source=>'NON_DOMINANT_TIME_COMPLETE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_NUMBER_FIELD'
@@ -15211,7 +15257,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(36704949850029929)
 ,p_item_source_plug_id=>wwv_flow_imp.id(36529340393850276)
-,p_prompt=>'Non Dominant Pegs Complete'
+,p_prompt=>'Number of pegs complete = _____ pegs'
 ,p_source=>'NON_DOMINANT_PEGS_COMPLETE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_NUMBER_FIELD'
@@ -15230,7 +15276,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_sequence=>40
 ,p_item_plug_id=>wwv_flow_imp.id(36704949850029929)
 ,p_item_source_plug_id=>wwv_flow_imp.id(36529340393850276)
-,p_prompt=>'Non Dominant Pegs Dropped'
+,p_prompt=>'Number of pegs dropped = _____ pegs'
 ,p_source=>'NON_DOMINANT_PEGS_DROPPED'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_NUMBER_FIELD'
@@ -15246,10 +15292,10 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(36540986901850287)
 ,p_name=>'P2_TRAIL_MAKING_A_TIME_COMPLETE'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>70
-,p_item_plug_id=>wwv_flow_imp.id(36529340393850276)
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(36705627987029936)
 ,p_item_source_plug_id=>wwv_flow_imp.id(36529340393850276)
-,p_prompt=>'Trail Making A Time Complete'
+,p_prompt=>'Number of pegs complete = _____ errors'
 ,p_source=>'TRAIL_MAKING_A_TIME_COMPLETE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_NUMBER_FIELD'
@@ -15265,10 +15311,10 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(36541366970850287)
 ,p_name=>'P2_TRAIL_MAKING_A_PEGS_COMPLETE'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>90
-,p_item_plug_id=>wwv_flow_imp.id(36529340393850276)
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(36705627987029936)
 ,p_item_source_plug_id=>wwv_flow_imp.id(36529340393850276)
-,p_prompt=>'Trail Making A Pegs Complete'
+,p_prompt=>'Time to complete = _____ seconds'
 ,p_source=>'TRAIL_MAKING_A_PEGS_COMPLETE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_NUMBER_FIELD'
@@ -15284,10 +15330,10 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(36541748579850287)
 ,p_name=>'P2_TRAIL_MAKING_B_TIME_COMPLETE'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>100
-,p_item_plug_id=>wwv_flow_imp.id(36529340393850276)
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(36705713015029937)
 ,p_item_source_plug_id=>wwv_flow_imp.id(36529340393850276)
-,p_prompt=>'Trail Making B Time Complete'
+,p_prompt=>'Time to complete = _____ seconds'
 ,p_source=>'TRAIL_MAKING_B_TIME_COMPLETE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_NUMBER_FIELD'
@@ -15303,10 +15349,10 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(36542112334850287)
 ,p_name=>'P2_TRAIL_MAKING_B_PEGS_COMPLETE'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>110
-,p_item_plug_id=>wwv_flow_imp.id(36529340393850276)
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(36705713015029937)
 ,p_item_source_plug_id=>wwv_flow_imp.id(36529340393850276)
-,p_prompt=>'Trail Making B Pegs Complete'
+,p_prompt=>'Number of pegs complete = _____ errors'
 ,p_source=>'TRAIL_MAKING_B_PEGS_COMPLETE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_NUMBER_FIELD'
@@ -15322,10 +15368,10 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(36542523626850289)
 ,p_name=>'P2_WAIS_LETTER_NUMBER_SEQUENCING_'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>120
-,p_item_plug_id=>wwv_flow_imp.id(36529340393850276)
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(36706038655029940)
 ,p_item_source_plug_id=>wwv_flow_imp.id(36529340393850276)
-,p_prompt=>'Wais Letter Number Sequencing:'
+,p_prompt=>'_______ (all item scores)/21'
 ,p_source=>'WAIS_LETTER_NUMBER_SEQUENCING:'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_NUMBER_FIELD'
@@ -15337,6 +15383,9 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_03=>'left'
 ,p_attribute_04=>'decimal'
 );
+end;
+/
+begin
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(36702793237029907)
 ,p_name=>'P2_TOTAL_WAIS_SCORE'
@@ -15387,9 +15436,6 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_attribute_05=>'PLSQL'
 ,p_wait_for_result=>'Y'
 );
-end;
-/
-begin
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(36702862628029908)
 ,p_name=>'add to total wais'
