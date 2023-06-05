@@ -28,7 +28,7 @@ prompt APPLICATION 120 - BCCSU
 -- Application Export:
 --   Application:     120
 --   Name:            BCCSU
---   Date and Time:   12:25 Monday June 5, 2023
+--   Date and Time:   15:49 Monday June 5, 2023
 --   Exported By:     MWONG
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -112,7 +112,7 @@ wwv_flow_imp.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'BCCSU'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230605121159'
+,p_last_upd_yyyymmddhh24miss=>'20230605153602'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>4
 ,p_print_server_type=>'INSTANCE'
@@ -14440,7 +14440,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230605121159'
+,p_last_upd_yyyymmddhh24miss=>'20230605153602'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(36529340393850276)
@@ -15372,11 +15372,10 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_plug_id=>wwv_flow_imp.id(36706038655029940)
 ,p_item_source_plug_id=>wwv_flow_imp.id(36529340393850276)
 ,p_prompt=>'_______ (all item scores)/21'
-,p_source=>'WAIS_LETTER_NUMBER_SEQUENCING:'
+,p_source=>'WAIS_LETTER_NUMBER_SEQUENCING'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_NUMBER_FIELD'
 ,p_cSize=>32
-,p_cMaxlength=>255
 ,p_field_template=>wwv_flow_imp.id(36485890462850228)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
@@ -15391,7 +15390,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P2_TOTAL_WAIS_SCORE'
 ,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(36702663108029906)
-,p_prompt=>'Total Wais Score'
+,p_prompt=>'_______/30'
 ,p_display_as=>'NATIVE_NUMBER_FIELD'
 ,p_cSize=>30
 ,p_begin_on_new_line=>'N'
