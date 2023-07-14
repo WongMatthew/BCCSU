@@ -28,16 +28,16 @@ prompt APPLICATION 120 - BCCSU
 -- Application Export:
 --   Application:     120
 --   Name:            BCCSU
---   Date and Time:   10:22 Friday July 14, 2023
+--   Date and Time:   15:46 Friday July 14, 2023
 --   Exported By:     MWONG
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                      7
---       Items:                  163
+--       Items:                  164
 --       Processes:               23
 --       Regions:                 40
 --       Buttons:                 14
---       Dynamic Actions:         15
+--       Dynamic Actions:         28
 --     Shared Components:
 --       Logic:
 --         Build Options:          1
@@ -111,8 +111,8 @@ wwv_flow_imp.create_flow(
 ,p_auto_time_zone=>'N'
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'BCCSU'
-,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230714101426'
+,p_last_updated_by=>'mwong'
+,p_last_upd_yyyymmddhh24miss=>'20230714154624'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>4
 ,p_print_server_type=>'INSTANCE'
@@ -15955,7 +15955,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230714101426'
+,p_last_upd_yyyymmddhh24miss=>'20230714154600'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(40029696306241200)
@@ -15977,7 +15977,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_display_sequence=>20
 ,p_include_in_reg_disp_sel_yn=>'Y'
 ,p_plug_new_grid_row=>false
-,p_plug_grid_column_span=>6
+,p_plug_grid_column_span=>7
 ,p_plug_display_column=>3
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
 ,p_attribute_01=>'N'
@@ -16217,30 +16217,10 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(39922419015366849)
-,p_name=>'P3_UNCONSCIOUS_1'
-,p_source_data_type=>'NUMBER'
-,p_item_sequence=>30
-,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
-,p_item_source_plug_id=>wwv_flow_imp.id(39921786943366842)
-,p_pre_element_text=>'5. Have you ever lost consciousness after a hit to the head? &nbsp;'
-,p_source=>'UNCONSCIOUS'
-,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'NATIVE_RADIOGROUP'
-,p_lov=>'STATIC2:Yes;1,No (skip to 7);0'
-,p_grid_label_column_span=>0
-,p_field_template=>wwv_flow_imp.id(36486651316850229)
-,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
-,p_is_persistent=>'N'
-,p_lov_display_extra=>'NO'
-,p_attribute_01=>'2'
-,p_attribute_02=>'NONE'
-);
-wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(39922564113366850)
 ,p_name=>'P3_UNCONSCIOUS_QUANTITY'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>40
+,p_item_sequence=>60
 ,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_pre_element_text=>'6. How many times in your life? &nbsp;'
@@ -16494,7 +16474,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_source=>'UNCONSCIOUS'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_RADIOGROUP'
-,p_lov=>'STATIC2:Yes;1,No (skip to H);0'
+,p_lov=>'STATIC2:Yes;1,No;0'
 ,p_grid_label_column_span=>1
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
@@ -16578,7 +16558,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40055596188713301)
 ,p_name=>'P3_UNCONSCIOUS_SEVERITY_AGE'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>70
+,p_item_sequence=>90
 ,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_pre_element_text=>'a. How old were you? &nbsp;'
@@ -16599,7 +16579,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40055674231713302)
 ,p_name=>'P3_UNCONSCIOUS_CAUSE'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>100
+,p_item_sequence=>110
 ,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_source=>'UNCONSCIOUS_CAUSE'
@@ -16637,7 +16617,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40055841020713304)
 ,p_name=>'P3_UNCONSCIOUS_DISCUSSION'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>180
+,p_item_sequence=>160
 ,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_source=>'UNCONSCIOUS_DISCUSSION'
@@ -16656,7 +16636,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40055961305713305)
 ,p_name=>'P3_CLEAR_MEMORY_DURATION'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>210
+,p_item_sequence=>180
 ,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_source=>'CLEAR_MEMORY_DURATION'
@@ -16675,7 +16655,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40056042184713306)
 ,p_name=>'P3_HOSPITAL_ATTENDANCE'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>240
+,p_item_sequence=>200
 ,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_source=>'HOSPITAL_ATTENDANCE'
@@ -16694,7 +16674,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40056168316713307)
 ,p_name=>'P3_HOSPITAL_ATTENDANCE_LENGTH'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>250
+,p_item_sequence=>210
 ,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_pre_element_text=>'Length of stay &nbsp;'
@@ -16715,7 +16695,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40056225202713308)
 ,p_name=>'P3_HOSPITAL_ATTENDANCE_PARAMEDICS'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>260
+,p_item_sequence=>220
 ,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_pre_element_text=>'Did paramedics come? &nbsp;'
@@ -16735,7 +16715,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40056356265713309)
 ,p_name=>'P3_SYMPTOMS'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>290
+,p_item_sequence=>240
 ,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_source=>'SYMPTOMS'
@@ -16754,7 +16734,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40056473356713310)
 ,p_name=>'P3_SYMPTOMS_DURATION'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>310
+,p_item_sequence=>260
 ,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_source=>'SYMPTOMS_DURATION'
@@ -16855,9 +16835,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_01=>'3'
 ,p_attribute_02=>'NONE'
 );
-end;
-/
-begin
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40057586384713321)
 ,p_name=>'P3_HUNTINGTONS'
@@ -16879,6 +16856,9 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_01=>'3'
 ,p_attribute_02=>'NONE'
 );
+end;
+/
+begin
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40057674671713322)
 ,p_name=>'P3_MULTIPLE_SCLEROSIS'
@@ -16924,7 +16904,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_source=>'DIFFICULTY_LEARNING'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_RADIOGROUP'
-,p_lov=>'STATIC2:Yes;1,No (skip to 9);0'
+,p_lov=>'STATIC2:Yes;1,No;0'
 ,p_grid_column=>1
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
@@ -16981,11 +16961,11 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_sequence=>150
 ,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39922094037366845)
-,p_prompt=>'Dysxlexia'
+,p_prompt=>'Dyslexia'
 ,p_source=>'LEARNING_DISABILITY_DYSXLEXIA'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_RADIOGROUP'
-,p_lov=>'STATIC2:Yes;1,No;2'
+,p_lov=>'STATIC2:Yes;1,No;0'
 ,p_grid_column=>2
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
@@ -16998,14 +16978,14 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40058884217713334)
 ,p_name=>'P3_LEARNING_DISABILITY_WRITING'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>160
+,p_item_sequence=>180
 ,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_prompt=>'Writing'
 ,p_source=>'LEARNING_DISABILITY_WRITING'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_RADIOGROUP'
-,p_lov=>'STATIC2:Yes;1,No;2'
+,p_lov=>'STATIC2:Yes;1,No;0'
 ,p_grid_column=>2
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
@@ -17018,14 +16998,14 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40058995372713335)
 ,p_name=>'P3_LEARNING_DISABILITY_MATH'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>170
+,p_item_sequence=>190
 ,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_prompt=>'Math'
 ,p_source=>'LEARNING_DISABILITY_MATH'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_RADIOGROUP'
-,p_lov=>'STATIC2:Yes;1,No;2'
+,p_lov=>'STATIC2:Yes;1,No;0'
 ,p_grid_column=>2
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
@@ -17038,14 +17018,14 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40059032323713336)
 ,p_name=>'P3_LEARNING_DISABILITY_ATTENTION'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>180
+,p_item_sequence=>210
 ,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_prompt=>'Attention deficit hyperactivity disorder'
 ,p_source=>'LEARNING_DISABILITY_ATTENTION'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_RADIOGROUP'
-,p_lov=>'STATIC2:Yes;1,No;2'
+,p_lov=>'STATIC2:Yes;1,No;0'
 ,p_grid_column=>2
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
@@ -17058,7 +17038,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40059132127713337)
 ,p_name=>'P3_LEARNING_DISABILITY_OTHER'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>190
+,p_item_sequence=>230
 ,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_prompt=>'Other &nbsp;'
@@ -17080,7 +17060,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40059249729713338)
 ,p_name=>'P3_DIAGNOSER'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>230
+,p_item_sequence=>260
 ,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_source=>'DIAGNOSER'
@@ -17099,7 +17079,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40059399910713339)
 ,p_name=>'P3_WHEN_DIAGNOSED'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>260
+,p_item_sequence=>280
 ,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_prompt=>'b. Were you diagnosed as a child or as an adult?   '
@@ -17120,7 +17100,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40059454530713340)
 ,p_name=>'P3_WHY_DIAGNOSED'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>290
+,p_item_sequence=>300
 ,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_source=>'WHY_DIAGNOSED'
@@ -17173,7 +17153,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_source=>'HELD_BACK'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_RADIOGROUP'
-,p_lov=>'STATIC2:Yes;1,No (skip to 11);2'
+,p_lov=>'STATIC2:Yes;1,No;2'
 ,p_grid_column=>1
 ,p_grid_label_column_span=>6
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
@@ -17212,7 +17192,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_source=>'SKIP_GRADE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_RADIOGROUP'
-,p_lov=>'STATIC2:Yes;1,No (skip to 12);2'
+,p_lov=>'STATIC2:Yes;1,No;2'
 ,p_grid_column=>1
 ,p_grid_label_column_span=>6
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
@@ -17278,7 +17258,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_source=>'ATTENDING_SCHOOL'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_RADIOGROUP'
-,p_lov=>'STATIC2:Yes;1,No (skip to total years education);2'
+,p_lov=>'STATIC2:Yes;1,No;0'
 ,p_grid_column=>1
 ,p_grid_label_column_span=>6
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
@@ -17366,7 +17346,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_source=>'SLEEP_DURATION'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_RADIOGROUP'
-,p_lov=>'STATIC2:None (skip to 14);1,Less than an hour;2,Between 1 hour and 4 hours;3,Between 4 hours and 6 hours;4,More than 6 hours;5'
+,p_lov=>'STATIC2:None;1,Less than an hour;2,Between 1 hour and 4 hours;3,Between 4 hours and 6 hours;4,More than 6 hours;5'
 ,p_grid_label_column_span=>1
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
@@ -17577,7 +17557,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40065182123730547)
 ,p_name=>'P3_UNCONSCIOUS_SEVERITY_INFO'
-,p_item_sequence=>50
+,p_item_sequence=>80
 ,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_pre_element_text=>'The following questions are about the most severe incident:'
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -17592,7 +17572,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40065249031730548)
 ,p_name=>'P3_UNCONSCIOUS_CAUSE_QUESTION'
-,p_item_sequence=>80
+,p_item_sequence=>100
 ,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_pre_element_text=>'b. What was the cause?'
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -17608,7 +17588,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40284811681719301)
 ,p_name=>'P3_UNCONSCIOUS_CAUSE_OTHER'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>110
+,p_item_sequence=>120
 ,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_source=>'UNCONSCIOUS_CAUSE'
@@ -17627,7 +17607,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40284970078719302)
 ,p_name=>'P3_UNCONSCIOUS_DURATION_1_QUESTION'
-,p_item_sequence=>120
+,p_item_sequence=>130
 ,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_pre_element_text=>'c. How long was the loss of consciousness? '
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -17642,7 +17622,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40285347652719306)
 ,p_name=>'P3_UNCONSCIOUS_DISCUSSION_QUESTION'
-,p_item_sequence=>160
+,p_item_sequence=>150
 ,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_prompt=>unistr('i. If participant was unconscious for hours, days or months: Did anyone tell you that you had woken up and talked during that time (even if you don\2019t remember the conversations)? ')
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -17658,7 +17638,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40285456322719307)
 ,p_name=>'P3_CLEAR_MEMORY_DURATION_QUESTION'
-,p_item_sequence=>190
+,p_item_sequence=>170
 ,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_prompt=>'d. When did you have a clear memory for what was going on after the event (length of post-traumatic amnesia)? For example, do you remember people helping you or being brought to hospital?'
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -17674,7 +17654,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40285576627719308)
 ,p_name=>'P3_HOSPITAL_ATTENDANCE_QUESTION'
-,p_item_sequence=>220
+,p_item_sequence=>190
 ,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_pre_element_text=>'e. Did you go to the hospital?  '
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -17689,7 +17669,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40285643934719309)
 ,p_name=>'P3_SYMPTOMS_QUESTION'
-,p_item_sequence=>270
+,p_item_sequence=>230
 ,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_prompt=>'f. Did you have any ongoing symptoms after the event, such as headaches, nausea, vomiting, blurred vision or change in vision, confusion, difficulty concentrating?  '
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -17705,7 +17685,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40285748694719310)
 ,p_name=>'P3_SYMPTOMS_DURATION_QUESTION'
-,p_item_sequence=>300
+,p_item_sequence=>250
 ,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_pre_element_text=>'i. If yes, how long did these last?'
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -17747,9 +17727,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_04=>'Y'
 ,p_attribute_05=>'PLAIN'
 );
-end;
-/
-begin
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40286078136719313)
 ,p_name=>'P3_TIRED_QUESTION'
@@ -17765,6 +17742,9 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_04=>'Y'
 ,p_attribute_05=>'PLAIN'
 );
+end;
+/
+begin
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40286161744719314)
 ,p_name=>'P3_SLEEP_TYPE_QUESTION'
@@ -17958,7 +17938,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40423475164941521)
 ,p_name=>'P3_LEARNING_DISABILITY_INFO_2'
-,p_item_sequence=>200
+,p_item_sequence=>240
 ,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_prompt=>'If no to all skip to question 10.'
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -17974,7 +17954,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40423503646941522)
 ,p_name=>'P3_DIAGNOSER_QUESTION'
-,p_item_sequence=>210
+,p_item_sequence=>250
 ,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_prompt=>'a. If yes, who diagnosed you?  '
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -17991,7 +17971,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40423614320941523)
 ,p_name=>'P3_DIAGNOSER_OTHER'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>240
+,p_item_sequence=>270
 ,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_source=>'DIAGNOSER'
@@ -18010,7 +17990,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40423737205941524)
 ,p_name=>'P3_WHY_DIAGNOSED_QUESTION'
-,p_item_sequence=>270
+,p_item_sequence=>290
 ,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_prompt=>'c. Why were you assessed for the condition? '
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -18027,7 +18007,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40423984462941526)
 ,p_name=>'P3_WHY_DIAGNOSED_OTHER'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>300
+,p_item_sequence=>310
 ,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_source=>'DIAGNOSER'
@@ -18183,6 +18163,35 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_02=>'VALUE'
 ,p_attribute_04=>'Y'
 ,p_attribute_05=>'PLAIN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(41070612719548901)
+,p_name=>'P3_HIDDEN_VAR'
+,p_item_sequence=>220
+,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(41073060061548925)
+,p_name=>'P3_UNCONSCIOUS__1'
+,p_source_data_type=>'NUMBER'
+,p_item_sequence=>50
+,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
+,p_item_source_plug_id=>wwv_flow_imp.id(39921786943366842)
+,p_prompt=>'Unconscious 1'
+,p_pre_element_text=>'5. Have you ever lost consciousness after a hit to the head? &nbsp;'
+,p_source=>'UNCONSCIOUS'
+,p_source_type=>'REGION_SOURCE_COLUMN'
+,p_display_as=>'NATIVE_RADIOGROUP'
+,p_lov=>'STATIC2:Yes;1,No;0'
+,p_grid_label_column_span=>0
+,p_field_template=>wwv_flow_imp.id(36486651316850229)
+,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
+,p_is_persistent=>'N'
+,p_lov_display_extra=>'NO'
+,p_attribute_01=>'2'
+,p_attribute_02=>'NONE'
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(40425566723941542)
@@ -18644,6 +18653,565 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P3_SCHOOL_TYPE_OTHER'
 );
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(41008141655038502)
+,p_name=>'Display ''skip to H'''
+,p_event_sequence=>120
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P3_UNCONSCIOUS'
+,p_condition_element=>'P3_UNCONSCIOUS'
+,p_triggering_condition_type=>'EQUALS'
+,p_triggering_expression=>'1'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41008251439038503)
+,p_event_id=>wwv_flow_imp.id(41008141655038502)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_SHOW'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_UNCONSCIOUS_DURATION_QUESTION,P3_UNCONSCIOUS_DURATION,P3_SIDE_EFFECTS_QUESTION,P3_SIDE_EFFECTS,P3_SIDE_EFFECTS_DURATION_QUESTION,P3_SIDE_EFFECTS_DURATION'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41008319813038504)
+,p_event_id=>wwv_flow_imp.id(41008141655038502)
+,p_event_result=>'FALSE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_HIDE'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_UNCONSCIOUS_DURATION_QUESTION,P3_UNCONSCIOUS_DURATION,P3_SIDE_EFFECTS_QUESTION,P3_SIDE_EFFECTS,P3_SIDE_EFFECTS_DURATION_QUESTION,P3_SIDE_EFFECTS_DURATION'
+);
+end;
+/
+begin
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41008463868038505)
+,p_event_id=>wwv_flow_imp.id(41008141655038502)
+,p_event_result=>'FALSE'
+,p_action_sequence=>20
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_SET_VALUE'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_UNCONSCIOUS_DURATION_QUESTION,P3_UNCONSCIOUS_DURATION,P3_SIDE_EFFECTS_QUESTION,P3_SIDE_EFFECTS,P3_SIDE_EFFECTS_DURATION_QUESTION,P3_SIDE_EFFECTS_DURATION'
+,p_attribute_01=>'STATIC_ASSIGNMENT'
+,p_attribute_09=>'N'
+,p_wait_for_result=>'Y'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(41010104631038522)
+,p_name=>'Display Skip to 9'
+,p_event_sequence=>140
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P3_DIFFICULTY_LEARNING'
+,p_condition_element=>'P3_DIFFICULTY_LEARNING'
+,p_triggering_condition_type=>'EQUALS'
+,p_triggering_expression=>'1'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41010238301038523)
+,p_event_id=>wwv_flow_imp.id(41010104631038522)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_SHOW'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_ACADEMIC_DIFFICULTIES_QUESTION,P3_ACADEMIC_DIFFICULTIES,P3_SUPPORT_CLASSES_QUESTION,P3_SUPPORT_CLASSES'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41010302166038524)
+,p_event_id=>wwv_flow_imp.id(41010104631038522)
+,p_event_result=>'FALSE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_HIDE'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_ACADEMIC_DIFFICULTIES_QUESTION,P3_ACADEMIC_DIFFICULTIES,P3_SUPPORT_CLASSES_QUESTION,P3_SUPPORT_CLASSES'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41010466025038525)
+,p_event_id=>wwv_flow_imp.id(41010104631038522)
+,p_event_result=>'FALSE'
+,p_action_sequence=>20
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_SET_VALUE'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_ACADEMIC_DIFFICULTIES_QUESTION,P3_ACADEMIC_DIFFICULTIES,P3_SUPPORT_CLASSES_QUESTION,P3_SUPPORT_CLASSES'
+,p_attribute_01=>'STATIC_ASSIGNMENT'
+,p_attribute_09=>'N'
+,p_wait_for_result=>'Y'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(41010538793038526)
+,p_name=>'Display Skip to 11'
+,p_event_sequence=>150
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P3_HELD_BACK'
+,p_condition_element=>'P3_HELD_BACK'
+,p_triggering_condition_type=>'EQUALS'
+,p_triggering_expression=>'1'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41010636695038527)
+,p_event_id=>wwv_flow_imp.id(41010538793038526)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_SHOW'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_HELD_BACK_WHY_QUESTION,P3_HELD_BACK_WHY'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41010708247038528)
+,p_event_id=>wwv_flow_imp.id(41010538793038526)
+,p_event_result=>'FALSE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_HIDE'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_HELD_BACK_WHY_QUESTION,P3_HELD_BACK_WHY'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41010894165038529)
+,p_event_id=>wwv_flow_imp.id(41010538793038526)
+,p_event_result=>'FALSE'
+,p_action_sequence=>20
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_SET_VALUE'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_HELD_BACK_WHY_QUESTION,P3_HELD_BACK_WHY'
+,p_attribute_01=>'STATIC_ASSIGNMENT'
+,p_attribute_09=>'N'
+,p_wait_for_result=>'Y'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(41011536660038536)
+,p_name=>'Display Grade number'
+,p_event_sequence=>160
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P3_SKIP_GRADE'
+,p_condition_element=>'P3_SKIP_GRADE'
+,p_triggering_condition_type=>'EQUALS'
+,p_triggering_expression=>'1'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41011688540038537)
+,p_event_id=>wwv_flow_imp.id(41011536660038536)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_SHOW'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_GRADE_NUMBER'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41011775128038538)
+,p_event_id=>wwv_flow_imp.id(41011536660038536)
+,p_event_result=>'FALSE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_HIDE'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_GRADE_NUMBER'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41011859354038539)
+,p_event_id=>wwv_flow_imp.id(41011536660038536)
+,p_event_result=>'FALSE'
+,p_action_sequence=>20
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_SET_VALUE'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_GRADE_NUMBER'
+,p_attribute_01=>'STATIC_ASSIGNMENT'
+,p_attribute_09=>'N'
+,p_wait_for_result=>'Y'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(41011901000038540)
+,p_name=>'Display Total Years Education'
+,p_event_sequence=>170
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P3_ATTENDING_SCHOOL'
+,p_condition_element=>'P3_ATTENDING_SCHOOL'
+,p_triggering_condition_type=>'EQUALS'
+,p_triggering_expression=>'1'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41012090360038541)
+,p_event_id=>wwv_flow_imp.id(41011901000038540)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_SHOW'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_DURATION_EDUCATION_INFO,P3_DURATION_EDUCATION'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41012120475038542)
+,p_event_id=>wwv_flow_imp.id(41011901000038540)
+,p_event_result=>'FALSE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_HIDE'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_DURATION_EDUCATION_INFO,P3_DURATION_EDUCATION'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41012230490038543)
+,p_event_id=>wwv_flow_imp.id(41011901000038540)
+,p_event_result=>'FALSE'
+,p_action_sequence=>20
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_SET_VALUE'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_DURATION_EDUCATION_INFO,P3_DURATION_EDUCATION'
+,p_attribute_01=>'STATIC_ASSIGNMENT'
+,p_attribute_09=>'N'
+,p_wait_for_result=>'Y'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(41070892279548903)
+,p_name=>'Display ''skip to 10'''
+,p_event_sequence=>210
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P3_HIDDEN_VAR'
+,p_condition_element=>'P3_HIDDEN_VAR'
+,p_triggering_condition_type=>'EQUALS'
+,p_triggering_expression=>'hide'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41070954931548904)
+,p_event_id=>wwv_flow_imp.id(41070892279548903)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_SHOW'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_DIAGNOSER_QUESTION,P3_DIAGNOSER,P3_WHEN_DIAGNOSED,P3_WHY_DIAGNOSED_QUESTION,P3_WHY_DIAGNOSED'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41071229603548907)
+,p_event_id=>wwv_flow_imp.id(41070892279548903)
+,p_event_result=>'FALSE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_HIDE'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_DIAGNOSER_QUESTION,P3_DIAGNOSER,P3_WHEN_DIAGNOSED,P3_WHY_DIAGNOSED_QUESTION,P3_WHY_DIAGNOSED'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41071330809548908)
+,p_event_id=>wwv_flow_imp.id(41070892279548903)
+,p_event_result=>'FALSE'
+,p_action_sequence=>20
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_SET_VALUE'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_DIAGNOSER_QUESTION,P3_DIAGNOSER,P3_WHEN_DIAGNOSED,P3_WHY_DIAGNOSED_QUESTION,P3_WHY_DIAGNOSED'
+,p_attribute_01=>'STATIC_ASSIGNMENT'
+,p_attribute_09=>'N'
+,p_wait_for_result=>'Y'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(41071090411548905)
+,p_name=>'Check if all ''no'' - Attention'
+,p_event_sequence=>220
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P3_LEARNING_DISABILITY_ATTENTION'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41071124460548906)
+,p_event_id=>wwv_flow_imp.id(41071090411548905)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'// Get the values of the radio button page items',
+'var dyslexiaValue = $v("P3_LEARNING_DISABILITY_DYSXLEXIA");',
+'var writingValue = $v("P3_LEARNING_DISABILITY_WRITING");',
+'var mathValue = $v("P3_LEARNING_DISABILITY_MATH");',
+'var attentionValue = $v("P3_LEARNING_DISABILITY_ATTENTION")',
+'',
+'console.log("dyslexiaValue:", dyslexiaValue);',
+'console.log("writingValue:", writingValue);',
+'console.log("mathValue:", mathValue);',
+'console.log("attentionValue:", attentionValue);',
+'',
+'// Check if all the values are ''0''',
+'if (dyslexiaValue === "0" && writingValue === "0" && mathValue === "0" && attentionValue === "0") {',
+'  // Set the value of P3_HIDDEN_VAR to ''hide''',
+'  $s("P3_HIDDEN_VAR", "hide"); // Replace "P3_HIDDEN_VAR" ',
+'} ',
+'else {',
+'  // Set the value of P3_HIDDEN_VAR to ''show''',
+'  $s("P3_HIDDEN_VAR", "show"); // Replace "P3_HIDDEN_VAR" ',
+'}',
+''))
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(41071542667548910)
+,p_name=>'Check if all ''no'' - Math'
+,p_event_sequence=>230
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P3_LEARNING_DISABILITY_MATH'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41071629572548911)
+,p_event_id=>wwv_flow_imp.id(41071542667548910)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'// Get the values of the radio button page items',
+'var dyslexiaValue = $v("P3_LEARNING_DISABILITY_DYSXLEXIA");',
+'var writingValue = $v("P3_LEARNING_DISABILITY_WRITING");',
+'var mathValue = $v("P3_LEARNING_DISABILITY_MATH");',
+'var attentionValue = $v("P3_LEARNING_DISABILITY_ATTENTION")',
+'',
+'console.log("dyslexiaValue:", dyslexiaValue);',
+'console.log("writingValue:", writingValue);',
+'console.log("mathValue:", mathValue);',
+'console.log("attentionValue:", attentionValue);',
+'',
+'// Check if all the values are ''0''',
+'if (dyslexiaValue === "0" && writingValue === "0" && mathValue === "0" && attentionValue === "0") {',
+'  // Set the value of P3_HIDDEN_VAR to ''hide''',
+'  $s("P3_HIDDEN_VAR", "hide"); // Replace "P3_HIDDEN_VAR" ',
+'} ',
+'else {',
+'  // Set the value of P3_HIDDEN_VAR to ''show''',
+'  $s("P3_HIDDEN_VAR", "show"); // Replace "P3_HIDDEN_VAR" ',
+'}',
+''))
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(41071753138548912)
+,p_name=>'Check if all ''no'' - Writing'
+,p_event_sequence=>240
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P3_LEARNING_DISABILITY_WRITING'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41071860771548913)
+,p_event_id=>wwv_flow_imp.id(41071753138548912)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'// Get the values of the radio button page items',
+'var dyslexiaValue = $v("P3_LEARNING_DISABILITY_DYSXLEXIA");',
+'var writingValue = $v("P3_LEARNING_DISABILITY_WRITING");',
+'var mathValue = $v("P3_LEARNING_DISABILITY_MATH");',
+'var attentionValue = $v("P3_LEARNING_DISABILITY_ATTENTION")',
+'',
+'console.log("dyslexiaValue:", dyslexiaValue);',
+'console.log("writingValue:", writingValue);',
+'console.log("mathValue:", mathValue);',
+'console.log("attentionValue:", attentionValue);',
+'',
+'// Check if all the values are ''0''',
+'if (dyslexiaValue === "0" && writingValue === "0" && mathValue === "0" && attentionValue === "0") {',
+'  // Set the value of P3_HIDDEN_VAR to ''hide''',
+'  $s("P3_HIDDEN_VAR", "hide"); // Replace "P3_HIDDEN_VAR" ',
+'} ',
+'else {',
+'  // Set the value of P3_HIDDEN_VAR to ''show''',
+'  $s("P3_HIDDEN_VAR", "show"); // Replace "P3_HIDDEN_VAR" ',
+'}',
+''))
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(41071901959548914)
+,p_name=>'Check if all ''no'' - Dyslexia'
+,p_event_sequence=>250
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P3_LEARNING_DISABILITY_DYSXLEXIA'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41072027296548915)
+,p_event_id=>wwv_flow_imp.id(41071901959548914)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'// Get the values of the radio button page items',
+'var dyslexiaValue = $v("P3_LEARNING_DISABILITY_DYSXLEXIA");',
+'var writingValue = $v("P3_LEARNING_DISABILITY_WRITING");',
+'var mathValue = $v("P3_LEARNING_DISABILITY_MATH");',
+'var attentionValue = $v("P3_LEARNING_DISABILITY_ATTENTION")',
+'',
+'console.log("dyslexiaValue:", dyslexiaValue);',
+'console.log("writingValue:", writingValue);',
+'console.log("mathValue:", mathValue);',
+'console.log("attentionValue:", attentionValue);',
+'',
+'// Check if all the values are 0',
+'if (dyslexiaValue === "0" && writingValue === "0" && mathValue === "0" && attentionValue === "0") {',
+'  // Set the value of P3_HIDDEN_VAR to ''hide''',
+'  $s("P3_HIDDEN_VAR", "hide"); // Replace "P3_HIDDEN_VAR" ',
+'} ',
+'else {',
+'  // Set the value of P3_HIDDEN_VAR to ''show''',
+'  $s("P3_HIDDEN_VAR", "show"); // Replace "P3_HIDDEN_VAR" ',
+'}',
+''))
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(41072306089548918)
+,p_name=>'test'
+,p_event_sequence=>260
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P3_UNCONSCIOUS_1'
+,p_condition_element=>'P3_UNCONSCIOUS_1'
+,p_triggering_condition_type=>'EQUALS'
+,p_triggering_expression=>'1'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41072413411548919)
+,p_event_id=>wwv_flow_imp.id(41072306089548918)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'alert(''ok'');'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(41072657143548921)
+,p_name=>'Display ''skip to 7'''
+,p_event_sequence=>270
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P3_UNCONSCIOUS_1_1'
+,p_condition_element=>'P3_UNCONSCIOUS_1_1'
+,p_triggering_condition_type=>'EQUALS'
+,p_triggering_expression=>'1'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41072714756548922)
+,p_event_id=>wwv_flow_imp.id(41072657143548921)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_SHOW'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_UNCONSCIOUS_QUANTITY'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41072858341548923)
+,p_event_id=>wwv_flow_imp.id(41072657143548921)
+,p_event_result=>'FALSE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_HIDE'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_UNCONSCIOUS_QUANTITY'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41072996082548924)
+,p_event_id=>wwv_flow_imp.id(41072657143548921)
+,p_event_result=>'FALSE'
+,p_action_sequence=>20
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_SET_VALUE'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_UNCONSCIOUS_QUANTITY'
+,p_attribute_01=>'STATIC_ASSIGNMENT'
+,p_attribute_09=>'N'
+,p_wait_for_result=>'Y'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(41073145954548926)
+,p_name=>'display question 6'
+,p_event_sequence=>270
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P3_UNCONSCIOUS__1'
+,p_condition_element=>'P3_UNCONSCIOUS__1'
+,p_triggering_condition_type=>'EQUALS'
+,p_triggering_expression=>'1'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41073238433548927)
+,p_event_id=>wwv_flow_imp.id(41073145954548926)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_SHOW'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_UNCONSCIOUS_QUANTITY,P3_UNCONSCIOUS_SEVERITY_INFO,P3_UNCONSCIOUS_SEVERITY_AGE,P3_UNCONSCIOUS_CAUSE_QUESTION,P3_UNCONSCIOUS_CAUSE,P3_UNCONSCIOUS_DURATION_1_QUESTION,P3_UNCONSCIOUS_DURATION_1,P3_UNCONSCIOUS_DISCUSSION_QUESTION,P3_UNCONSCIOUS_DISCUSS'
+||'ION,P3_CLEAR_MEMORY_DURATION_QUESTION,P3_CLEAR_MEMORY_DURATION,P3_HOSPITAL_ATTENDANCE_QUESTION,P3_HOSPITAL_ATTENDANCE,P3_HOSPITAL_ATTENDANCE_LENGTH,P3_HOSPITAL_ATTENDANCE_PARAMEDICS,P3_SYMPTOMS_QUESTION,P3_SYMPTOMS,P3_SYMPTOMS_DURATION_QUESTION,P3_SY'
+||'MPTOMS_DURATION'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41073308772548928)
+,p_event_id=>wwv_flow_imp.id(41073145954548926)
+,p_event_result=>'FALSE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_HIDE'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_UNCONSCIOUS_QUANTITY,P3_UNCONSCIOUS_SEVERITY_INFO,P3_UNCONSCIOUS_SEVERITY_AGE,P3_UNCONSCIOUS_CAUSE_QUESTION,P3_UNCONSCIOUS_CAUSE,P3_UNCONSCIOUS_DURATION_1_QUESTION,P3_UNCONSCIOUS_DURATION_1,P3_UNCONSCIOUS_DISCUSSION_QUESTION,P3_UNCONSCIOUS_DISCUSS'
+||'ION,P3_CLEAR_MEMORY_DURATION_QUESTION,P3_CLEAR_MEMORY_DURATION,P3_HOSPITAL_ATTENDANCE_QUESTION,P3_HOSPITAL_ATTENDANCE,P3_HOSPITAL_ATTENDANCE_LENGTH,P3_HOSPITAL_ATTENDANCE_PARAMEDICS,P3_SYMPTOMS_QUESTION,P3_SYMPTOMS,P3_SYMPTOMS_DURATION_QUESTION,P3_SY'
+||'MPTOMS_DURATION'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(41073414025548929)
+,p_event_id=>wwv_flow_imp.id(41073145954548926)
+,p_event_result=>'FALSE'
+,p_action_sequence=>20
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_SET_VALUE'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P3_UNCONSCIOUS_QUANTITY,P3_UNCONSCIOUS_SEVERITY_INFO,P3_UNCONSCIOUS_SEVERITY_AGE,P3_UNCONSCIOUS_CAUSE_QUESTION,P3_UNCONSCIOUS_CAUSE,P3_UNCONSCIOUS_DURATION_1_QUESTION,P3_UNCONSCIOUS_DURATION_1,P3_UNCONSCIOUS_DISCUSSION_QUESTION,P3_UNCONSCIOUS_DISCUSS'
+||'ION,P3_CLEAR_MEMORY_DURATION_QUESTION,P3_CLEAR_MEMORY_DURATION,P3_HOSPITAL_ATTENDANCE_QUESTION,P3_HOSPITAL_ATTENDANCE,P3_HOSPITAL_ATTENDANCE_LENGTH,P3_HOSPITAL_ATTENDANCE_PARAMEDICS,P3_SYMPTOMS_QUESTION,P3_SYMPTOMS,P3_SYMPTOMS_DURATION_QUESTION,P3_SY'
+||'MPTOMS_DURATION'
+,p_attribute_01=>'STATIC_ASSIGNMENT'
+,p_attribute_09=>'N'
+,p_wait_for_result=>'Y'
+);
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(40045146109241234)
 ,p_process_sequence=>10
@@ -18696,9 +19264,6 @@ wwv_flow_imp_page.create_page_process(
 ,p_attribute_08=>'Y'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 );
-end;
-/
-begin
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(40846293159195502)
 ,p_process_sequence=>50
@@ -18829,8 +19394,8 @@ wwv_flow_imp_page.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'18'
-,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230713104542'
+,p_last_updated_by=>'mwong'
+,p_last_upd_yyyymmddhh24miss=>'20230714154624'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(40787830436081808)
@@ -18952,7 +19517,7 @@ wwv_flow_imp_page.create_worksheet_rpt(
 ,p_report_alias=>'408111'
 ,p_status=>'PUBLIC'
 ,p_is_default=>'Y'
-,p_report_columns=>'DBID:PARTICIPANT_NAME:COHORT:CODE:COHORT_CODE'
+,p_report_columns=>'PARTICIPANT_NAME:COHORT:CODE:COHORT_CODE:'
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(40788531027081815)
