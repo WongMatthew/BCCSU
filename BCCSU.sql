@@ -28,23 +28,23 @@ prompt APPLICATION 120 - BCCSU
 -- Application Export:
 --   Application:     120
 --   Name:            BCCSU
---   Date and Time:   15:10 Wednesday July 12, 2023
+--   Date and Time:   10:22 Friday July 14, 2023
 --   Exported By:     MWONG
 --   Flashback:       0
 --   Export Type:     Application Export
---     Pages:                      5
---       Items:                  158
---       Processes:                9
---       Regions:                 37
---       Buttons:                  9
---       Dynamic Actions:         16
+--     Pages:                      7
+--       Items:                  163
+--       Processes:               23
+--       Regions:                 40
+--       Buttons:                 14
+--       Dynamic Actions:         15
 --     Shared Components:
 --       Logic:
 --         Build Options:          1
 --       Navigation:
 --         Lists:                  3
 --         Breadcrumbs:            1
---           Entries:              3
+--           Entries:              5
 --       Security:
 --         Authentication:         2
 --         Authorization:          1
@@ -112,7 +112,7 @@ wwv_flow_imp.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'BCCSU'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230712145703'
+,p_last_upd_yyyymmddhh24miss=>'20230714101426'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>4
 ,p_print_server_type=>'INSTANCE'
@@ -172,18 +172,40 @@ wwv_flow_imp_shared.create_list_item(
  p_id=>wwv_flow_imp.id(36528648766850265)
 ,p_list_item_display_sequence=>20
 ,p_list_item_link_text=>'Cognitive Assessment Scores Form'
-,p_list_item_link_target=>'f?p=&APP_ID.:2:&APP_SESSION.::&DEBUG.:::'
+,p_list_item_link_target=>'f?p=&APP_ID.:2:&SESSION.::&DEBUG.::P2_DBID::'
 ,p_list_item_icon=>'fa-forms'
 ,p_list_item_current_type=>'TARGET_PAGE'
 );
 wwv_flow_imp_shared.create_list_item(
- p_id=>wwv_flow_imp.id(40029162136241196)
+ p_id=>wwv_flow_imp.id(40807675639219343)
 ,p_list_item_display_sequence=>30
+,p_list_item_link_text=>'Participant Listing'
+,p_list_item_link_target=>'f?p=&APP_ID.:12:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa-list'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'12'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(40029162136241196)
+,p_list_item_display_sequence=>40
 ,p_list_item_link_text=>'Neurobehavioral Medical Screen'
-,p_list_item_link_target=>'f?p=&APP_ID.:3:&APP_SESSION.::&DEBUG.:::'
+,p_list_item_link_target=>'f?p=&APP_ID.:3:&SESSION.::&DEBUG.::P3_PARTICIPANT_DBID,P3_PARTICIPANT_DBID_1,P3_PARTICIPANT_DBID_2,P3_PARTICIPANT_DBID_4,P3_PARTICIPANT_DBID_5,P3_PARTICIPANT_DBID_3:&P13_DBID.,&P13_DBID.,&P13_DBID.,&P13_DBID.,&P13_DBID.,&P13_DBID.:'
 ,p_list_item_icon=>'fa-forms'
+,p_list_item_disp_cond_type=>'ITEM_IS_NOT_NULL'
+,p_list_item_disp_condition=>'P13_DBID'
 ,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
 ,p_list_item_current_for_pages=>'3'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(40812696227228406)
+,p_list_item_display_sequence=>50
+,p_list_item_link_text=>'Participant Form'
+,p_list_item_link_target=>'f?p=&APP_ID.:13:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa-clipboard-list'
+,p_list_item_disp_cond_type=>'ITEM_IS_NOT_NULL'
+,p_list_item_disp_condition=>'P13_DBID'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'13'
 );
 end;
 /
@@ -632,6 +654,18 @@ wwv_flow_imp_shared.create_menu_option(
 ,p_short_name=>'Neurobehavioral Medical Screen'
 ,p_link=>'f?p=&APP_ID.:3:&APP_SESSION.::&DEBUG.:::'
 ,p_page_id=>3
+);
+wwv_flow_imp_shared.create_menu_option(
+ p_id=>wwv_flow_imp.id(40808580484219353)
+,p_short_name=>'Participant'
+,p_link=>'f?p=&APP_ID.:12:&SESSION.::&DEBUG.:::'
+,p_page_id=>12
+);
+wwv_flow_imp_shared.create_menu_option(
+ p_id=>wwv_flow_imp.id(40813579099228407)
+,p_short_name=>'Participant Form'
+,p_link=>'f?p=&APP_ID.:13:&SESSION.::&DEBUG.:::'
+,p_page_id=>13
 );
 end;
 /
@@ -15921,7 +15955,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230712145703'
+,p_last_upd_yyyymmddhh24miss=>'20230714101426'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(40029696306241200)
@@ -15940,10 +15974,11 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_name=>'Neurobehavioral Medical Screen'
 ,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
 ,p_plug_template=>wwv_flow_imp.id(36424165183850195)
-,p_plug_display_sequence=>10
+,p_plug_display_sequence=>20
 ,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_new_grid_row=>false
 ,p_plug_grid_column_span=>6
-,p_plug_display_column=>4
+,p_plug_display_column=>3
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
@@ -15954,7 +15989,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_parent_plug_id=>wwv_flow_imp.id(40062908158730525)
 ,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody:t-Form--leftLabels'
 ,p_plug_template=>wwv_flow_imp.id(36424165183850195)
-,p_plug_display_sequence=>50
+,p_plug_display_sequence=>60
 ,p_query_type=>'TABLE'
 ,p_query_table=>'TRAUMATIC_HEAD_INJURY'
 ,p_include_rowid_column=>false
@@ -15986,7 +16021,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_parent_plug_id=>wwv_flow_imp.id(40062908158730525)
 ,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
 ,p_plug_template=>wwv_flow_imp.id(36424165183850195)
-,p_plug_display_sequence=>110
+,p_plug_display_sequence=>100
 ,p_query_type=>'TABLE'
 ,p_query_table=>'SLEEP'
 ,p_include_rowid_column=>false
@@ -16061,7 +16096,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_parent_plug_id=>wwv_flow_imp.id(40062908158730525)
 ,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
 ,p_plug_template=>wwv_flow_imp.id(36424165183850195)
-,p_plug_display_sequence=>10
+,p_plug_display_sequence=>20
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<p style="overflow-wrap: break-word;">',
 '  For the neurocognitive assessments, it is important for us to know what type of educational history you have and any experiences with head injuries. The following questions will help us understand that history for you.',
@@ -16077,7 +16112,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_parent_plug_id=>wwv_flow_imp.id(40062908158730525)
 ,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
 ,p_plug_template=>wwv_flow_imp.id(36424165183850195)
-,p_plug_display_sequence=>20
+,p_plug_display_sequence=>30
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<p style="overflow-wrap: break-word;">',
 '   Ask all items check Yes or No for each one. For any "Yes" answer to any question please follow-up by gathering the following ',
@@ -16090,7 +16125,7 @@ wwv_flow_imp_page.create_page_plug(
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(40043519180241232)
 ,p_button_sequence=>30
-,p_button_plug_id=>wwv_flow_imp.id(40030297439241217)
+,p_button_plug_id=>wwv_flow_imp.id(40062908158730525)
 ,p_button_name=>'SAVE'
 ,p_button_action=>'SUBMIT'
 ,p_button_template_options=>'#DEFAULT#'
@@ -16105,7 +16140,7 @@ wwv_flow_imp_page.create_page_button(
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(40042570302241231)
 ,p_button_sequence=>10
-,p_button_plug_id=>wwv_flow_imp.id(40030297439241217)
+,p_button_plug_id=>wwv_flow_imp.id(40062908158730525)
 ,p_button_name=>'CANCEL'
 ,p_button_action=>'REDIRECT_PAGE'
 ,p_button_template_options=>'#DEFAULT#'
@@ -16116,8 +16151,8 @@ wwv_flow_imp_page.create_page_button(
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(40043910581241232)
-,p_button_sequence=>40
-,p_button_plug_id=>wwv_flow_imp.id(40030297439241217)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(40062908158730525)
 ,p_button_name=>'CREATE'
 ,p_button_action=>'SUBMIT'
 ,p_button_template_options=>'#DEFAULT#'
@@ -16132,7 +16167,7 @@ wwv_flow_imp_page.create_page_button(
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(40043115772241232)
 ,p_button_sequence=>20
-,p_button_plug_id=>wwv_flow_imp.id(40030297439241217)
+,p_button_plug_id=>wwv_flow_imp.id(40062908158730525)
 ,p_button_name=>'DELETE'
 ,p_button_action=>'SUBMIT'
 ,p_button_template_options=>'#DEFAULT#'
@@ -16148,7 +16183,8 @@ wwv_flow_imp_page.create_page_button(
 );
 wwv_flow_imp_page.create_page_branch(
  p_id=>wwv_flow_imp.id(40044225419241232)
-,p_branch_action=>'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
+,p_branch_name=>'Go To Page 3'
+,p_branch_action=>'f?p=&APP_ID.:3:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
 ,p_branch_point=>'AFTER_PROCESSING'
 ,p_branch_type=>'REDIRECT_URL'
 ,p_branch_sequence=>1
@@ -16165,7 +16201,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_is_persistent=>'N'
-,p_protection_level=>'S'
 ,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
@@ -16234,28 +16269,19 @@ wwv_flow_imp_page.create_page_item(
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_is_persistent=>'N'
-,p_protection_level=>'S'
 ,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40031043967241220)
 ,p_name=>'P3_PARTICIPANT_DBID'
 ,p_source_data_type=>'NUMBER'
-,p_is_required=>true
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_item_source_plug_id=>wwv_flow_imp.id(40030297439241217)
-,p_prompt=>'Participant'
 ,p_source=>'PARTICIPANT_DBID'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'NATIVE_NUMBER_FIELD'
-,p_cSize=>32
-,p_cMaxlength=>255
-,p_field_template=>wwv_flow_imp.id(36486725977850229)
-,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
-,p_is_persistent=>'N'
-,p_attribute_03=>'left'
-,p_attribute_04=>'decimal'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40031416491241223)
@@ -16755,7 +16781,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_is_persistent=>'N'
-,p_protection_level=>'S'
 ,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
@@ -16809,9 +16834,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_01=>'3'
 ,p_attribute_02=>'NONE'
 );
-end;
-/
-begin
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40057499577713320)
 ,p_name=>'P3_ALZHEIMERS'
@@ -16833,6 +16855,9 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_01=>'3'
 ,p_attribute_02=>'NONE'
 );
+end;
+/
+begin
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40057586384713321)
 ,p_name=>'P3_HUNTINGTONS'
@@ -16887,7 +16912,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_is_persistent=>'N'
-,p_protection_level=>'S'
 ,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
@@ -17123,7 +17147,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_is_persistent=>'N'
-,p_protection_level=>'S'
 ,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
@@ -17318,7 +17341,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_is_persistent=>'N'
-,p_protection_level=>'S'
 ,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
@@ -17695,9 +17717,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_04=>'Y'
 ,p_attribute_05=>'PLAIN'
 );
-end;
-/
-begin
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40285881568719311)
 ,p_name=>'P3_SLEEP_DURATION_QUESTION'
@@ -17728,6 +17747,9 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_04=>'Y'
 ,p_attribute_05=>'PLAIN'
 );
+end;
+/
+begin
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40286078136719313)
 ,p_name=>'P3_TIRED_QUESTION'
@@ -17878,7 +17900,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_source_data_type=>'NUMBER'
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
-,p_item_source_plug_id=>wwv_flow_imp.id(39922137359366846)
+,p_item_source_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_source=>'PARTICIPANT_DBID'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_HIDDEN'
@@ -18149,19 +18171,14 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40424940567941536)
 ,p_name=>'P3_DURATION_EDUCATION_INFO'
-,p_source_data_type=>'NUMBER'
 ,p_item_sequence=>200
 ,p_item_plug_id=>wwv_flow_imp.id(39921879824366843)
-,p_item_source_plug_id=>wwv_flow_imp.id(39921879824366843)
 ,p_prompt=>'For staff: Write in the total years of education in the box. Guidelines for total years of education are provided at the end of this section. Please use only these guidelines when assigning total years of education.'
-,p_source=>'DURATION_EDUCATION'
-,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
 ,p_grid_column=>1
 ,p_grid_label_column_span=>11
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#'
-,p_is_persistent=>'N'
 ,p_attribute_01=>'Y'
 ,p_attribute_02=>'VALUE'
 ,p_attribute_04=>'Y'
@@ -18582,35 +18599,6 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_affected_elements=>'P3_LEVEL_OF_EDUCATION_LAST_GRADE'
 );
 wwv_flow_imp_page.create_page_da_event(
- p_id=>wwv_flow_imp.id(40513938717140232)
-,p_name=>'Set Participant DBID'
-,p_event_sequence=>100
-,p_triggering_element_type=>'ITEM'
-,p_triggering_element=>'P3_PARTICIPANT_DBID'
-,p_bind_type=>'bind'
-,p_execution_type=>'IMMEDIATE'
-,p_bind_event_type=>'change'
-);
-wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(40514022325140233)
-,p_event_id=>wwv_flow_imp.id(40513938717140232)
-,p_event_result=>'TRUE'
-,p_action_sequence=>10
-,p_execute_on_page_init=>'N'
-,p_action=>'NATIVE_EXECUTE_PLSQL_CODE'
-,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
-':P3_PARTICIPANT_DBID_1 := :P3_PARTICIPANT_DBID;',
-':P3_PARTICIPANT_DBID_2 := :P3_PARTICIPANT_DBID;',
-':P3_PARTICIPANT_DBID_3 := :P3_PARTICIPANT_DBID;',
-':P3_PARTICIPANT_DBID_4 := :P3_PARTICIPANT_DBID;',
-':P3_PARTICIPANT_DBID_5 := :P3_PARTICIPANT_DBID;'))
-,p_attribute_02=>'P3_PARTICIPANT_DBID'
-,p_attribute_03=>'P3_PARTICIPANT_DBID_1,P3_PARTICIPANT_DBID_2,P3_PARTICIPANT_DBID_3,P3_PARTICIPANT_DBID_4,P3_PARTICIPANT_DBID_5'
-,p_attribute_04=>'N'
-,p_attribute_05=>'PLSQL'
-,p_wait_for_result=>'Y'
-);
-wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(40514156500140234)
 ,p_name=>'Display School Type Other'
 ,p_event_sequence=>110
@@ -18633,9 +18621,6 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P3_SCHOOL_TYPE_OTHER'
 );
-end;
-/
-begin
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(40514365464140236)
 ,p_event_id=>wwv_flow_imp.id(40514156500140234)
@@ -18665,7 +18650,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_region_id=>wwv_flow_imp.id(40030297439241217)
 ,p_process_type=>'NATIVE_FORM_DML'
-,p_process_name=>'Process form Neurobehavioral Medical Screen'
+,p_process_name=>'Process form Overdose Related Brain Injury'
 ,p_attribute_01=>'REGION_SOURCE'
 ,p_attribute_05=>'Y'
 ,p_attribute_06=>'Y'
@@ -18673,12 +18658,548 @@ wwv_flow_imp_page.create_page_process(
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 );
 wwv_flow_imp_page.create_page_process(
- p_id=>wwv_flow_imp.id(40044749511241234)
+ p_id=>wwv_flow_imp.id(40788676822081816)
+,p_process_sequence=>20
+,p_process_point=>'AFTER_SUBMIT'
+,p_region_id=>wwv_flow_imp.id(39921786943366842)
+,p_process_type=>'NATIVE_FORM_DML'
+,p_process_name=>'Process form Traumatic Head Injury'
+,p_attribute_01=>'REGION_SOURCE'
+,p_attribute_05=>'Y'
+,p_attribute_06=>'Y'
+,p_attribute_08=>'Y'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(40788778245081817)
+,p_process_sequence=>30
+,p_process_point=>'AFTER_SUBMIT'
+,p_region_id=>wwv_flow_imp.id(39922137359366846)
+,p_process_type=>'NATIVE_FORM_DML'
+,p_process_name=>'Process form Family History'
+,p_attribute_01=>'REGION_SOURCE'
+,p_attribute_05=>'Y'
+,p_attribute_06=>'Y'
+,p_attribute_08=>'Y'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(40788887347081818)
+,p_process_sequence=>40
+,p_process_point=>'AFTER_SUBMIT'
+,p_region_id=>wwv_flow_imp.id(39922094037366845)
+,p_process_type=>'NATIVE_FORM_DML'
+,p_process_name=>'Process form Learning Disorders'
+,p_attribute_01=>'REGION_SOURCE'
+,p_attribute_05=>'Y'
+,p_attribute_06=>'Y'
+,p_attribute_08=>'Y'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+);
+end;
+/
+begin
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(40846293159195502)
+,p_process_sequence=>50
+,p_process_point=>'AFTER_SUBMIT'
+,p_region_id=>wwv_flow_imp.id(39921879824366843)
+,p_process_type=>'NATIVE_FORM_DML'
+,p_process_name=>'Process form Education History'
+,p_attribute_01=>'REGION_SOURCE'
+,p_attribute_05=>'Y'
+,p_attribute_06=>'Y'
+,p_attribute_08=>'Y'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(40789038555081820)
+,p_process_sequence=>60
+,p_process_point=>'AFTER_SUBMIT'
+,p_region_id=>wwv_flow_imp.id(39921909946366844)
+,p_process_type=>'NATIVE_FORM_DML'
+,p_process_name=>'Process form Sleep'
+,p_attribute_01=>'REGION_SOURCE'
+,p_attribute_05=>'Y'
+,p_attribute_06=>'Y'
+,p_attribute_08=>'Y'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(40789742972081827)
+,p_process_sequence=>70
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'Success Message'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'apex_application.g_print_success_message :=''<span style="color:#ffffff">Successfully Submitted</span>'';',
+'end;'))
+,p_process_clob_language=>'PLSQL'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(40846126377195501)
 ,p_process_sequence=>10
+,p_process_point=>'BEFORE_HEADER'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'Populate'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'declare ',
+'n_count number;',
+'',
+'begin ',
+':P3_DBID := NULL;',
+':P3_DBID_1 := NULL;',
+':P3_DBID_2 := NULL;',
+':P3_DBID_3 := NULL;',
+':P3_DBID_4 := NULL;',
+':P3_DBID_5 := NULL;',
+'select count(*) into n_count from OVERDOSE_INJURY where PARTICIPANT_DBID = :P3_PARTICIPANT_DBID; ',
+'if n_count != 0 then ',
+'select DBID into :P3_DBID from OVERDOSE_INJURY where PARTICIPANT_DBID = :P3_PARTICIPANT_DBID; ',
+'select DBID into :P3_DBID_1 from TRAUMATIC_HEAD_INJURY where PARTICIPANT_DBID = :P3_PARTICIPANT_DBID;',
+'select DBID into :P3_DBID_2 from FAMILY_HISTORY where PARTICIPANT_DBID = :P3_PARTICIPANT_DBID;',
+'select DBID into :P3_DBID_3 from LEARNING_DISORDERS where PARTICIPANT_DBID = :P3_PARTICIPANT_DBID;',
+'select DBID into :P3_DBID_4 from EDUCATION_HISTORY where PARTICIPANT_DBID = :P3_PARTICIPANT_DBID;',
+'select DBID into :P3_DBID_5 from SLEEP where PARTICIPANT_DBID = :P3_PARTICIPANT_DBID; ',
+'end if;',
+'end;',
+''))
+,p_process_clob_language=>'PLSQL'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(40044749511241234)
+,p_process_sequence=>20
 ,p_process_point=>'BEFORE_HEADER'
 ,p_region_id=>wwv_flow_imp.id(40030297439241217)
 ,p_process_type=>'NATIVE_FORM_INIT'
-,p_process_name=>'Initialize form Neurobehavioral Medical Screen'
+,p_process_name=>'Initialize form Overdose Related Brain Injury'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(40789872222081828)
+,p_process_sequence=>30
+,p_process_point=>'BEFORE_HEADER'
+,p_region_id=>wwv_flow_imp.id(39921786943366842)
+,p_process_type=>'NATIVE_FORM_INIT'
+,p_process_name=>'Initialize form Traumatic Head Injury'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(40846868513195508)
+,p_process_sequence=>40
+,p_process_point=>'BEFORE_HEADER'
+,p_region_id=>wwv_flow_imp.id(39922137359366846)
+,p_process_type=>'NATIVE_FORM_INIT'
+,p_process_name=>'Initialize form Family History'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(40846389660195503)
+,p_process_sequence=>50
+,p_process_point=>'BEFORE_HEADER'
+,p_region_id=>wwv_flow_imp.id(39922094037366845)
+,p_process_type=>'NATIVE_FORM_INIT'
+,p_process_name=>'Initialize form Learning Disorders'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(40846661527195506)
+,p_process_sequence=>60
+,p_process_point=>'BEFORE_HEADER'
+,p_region_id=>wwv_flow_imp.id(39921879824366843)
+,p_process_type=>'NATIVE_FORM_INIT'
+,p_process_name=>'Initialize form Education History'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(40846705320195507)
+,p_process_sequence=>70
+,p_process_point=>'BEFORE_HEADER'
+,p_region_id=>wwv_flow_imp.id(39921909946366844)
+,p_process_type=>'NATIVE_FORM_INIT'
+,p_process_name=>'Initialize form Sleep'
+);
+end;
+/
+prompt --application/pages/page_00012
+begin
+wwv_flow_imp_page.create_page(
+ p_id=>12
+,p_name=>'participant'
+,p_alias=>'PARTICIPANT'
+,p_step_title=>'participant'
+,p_autocomplete_on_off=>'OFF'
+,p_page_template_options=>'#DEFAULT#'
+,p_protection_level=>'C'
+,p_page_component_map=>'18'
+,p_last_updated_by=>'MWONG'
+,p_last_upd_yyyymmddhh24miss=>'20230713104542'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(40787830436081808)
+,p_plug_name=>'Participant'
+,p_region_template_options=>'#DEFAULT#'
+,p_component_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_imp.id(36372529033850168)
+,p_plug_display_sequence=>10
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_query_type=>'SQL'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select DBID,',
+'       PARTICIPANT_NAME,',
+'       COHORT,',
+'       CODE,',
+'       COHORT_CODE',
+'  from PARTICIPANT'))
+,p_plug_source_type=>'NATIVE_IR'
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_prn_content_disposition=>'ATTACHMENT'
+,p_prn_units=>'INCHES'
+,p_prn_paper_size=>'LETTER'
+,p_prn_width=>11
+,p_prn_height=>8.5
+,p_prn_orientation=>'HORIZONTAL'
+,p_prn_page_header=>'Participant'
+,p_prn_page_header_font_color=>'#000000'
+,p_prn_page_header_font_family=>'Helvetica'
+,p_prn_page_header_font_weight=>'normal'
+,p_prn_page_header_font_size=>'12'
+,p_prn_page_footer_font_color=>'#000000'
+,p_prn_page_footer_font_family=>'Helvetica'
+,p_prn_page_footer_font_weight=>'normal'
+,p_prn_page_footer_font_size=>'12'
+,p_prn_header_bg_color=>'#EEEEEE'
+,p_prn_header_font_color=>'#000000'
+,p_prn_header_font_family=>'Helvetica'
+,p_prn_header_font_weight=>'bold'
+,p_prn_header_font_size=>'10'
+,p_prn_body_bg_color=>'#FFFFFF'
+,p_prn_body_font_color=>'#000000'
+,p_prn_body_font_family=>'Helvetica'
+,p_prn_body_font_weight=>'normal'
+,p_prn_body_font_size=>'10'
+,p_prn_border_width=>.5
+,p_prn_page_header_alignment=>'CENTER'
+,p_prn_page_footer_alignment=>'CENTER'
+,p_prn_border_color=>'#666666'
+);
+wwv_flow_imp_page.create_worksheet(
+ p_id=>wwv_flow_imp.id(40787909378081809)
+,p_max_row_count=>'1000000'
+,p_pagination_type=>'ROWS_X_TO_Y'
+,p_pagination_display_pos=>'BOTTOM_RIGHT'
+,p_report_list_mode=>'TABS'
+,p_lazy_loading=>false
+,p_show_detail_link=>'C'
+,p_show_notify=>'Y'
+,p_download_formats=>'CSV:HTML:XLSX:PDF'
+,p_enable_mail_download=>'Y'
+,p_detail_link=>'f?p=&APP_ID.:13:&SESSION.::&DEBUG.::P13_DBID:#DBID#'
+,p_detail_link_text=>'<img src="#APEX_FILES#app_ui/img/icons/apex-edit-pencil.png" class="apex-edit-pencil" alt="">'
+,p_owner=>'MWONG'
+,p_internal_uid=>40787909378081809
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(40788076570081810)
+,p_db_column_name=>'DBID'
+,p_display_order=>10
+,p_column_identifier=>'A'
+,p_column_label=>'Dbid'
+,p_column_type=>'NUMBER'
+,p_column_alignment=>'RIGHT'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(40788191185081811)
+,p_db_column_name=>'PARTICIPANT_NAME'
+,p_display_order=>20
+,p_column_identifier=>'B'
+,p_column_label=>'Participant Name'
+,p_column_type=>'STRING'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(40788297973081812)
+,p_db_column_name=>'COHORT'
+,p_display_order=>30
+,p_column_identifier=>'C'
+,p_column_label=>'Cohort'
+,p_column_type=>'NUMBER'
+,p_column_alignment=>'RIGHT'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(40788368837081813)
+,p_db_column_name=>'CODE'
+,p_display_order=>40
+,p_column_identifier=>'D'
+,p_column_label=>'Code'
+,p_column_type=>'NUMBER'
+,p_column_alignment=>'RIGHT'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(40788411730081814)
+,p_db_column_name=>'COHORT_CODE'
+,p_display_order=>50
+,p_column_identifier=>'E'
+,p_column_label=>'Cohort Code'
+,p_column_type=>'NUMBER'
+,p_column_alignment=>'RIGHT'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_rpt(
+ p_id=>wwv_flow_imp.id(40811016266222846)
+,p_application_user=>'APXWS_DEFAULT'
+,p_report_seq=>10
+,p_report_alias=>'408111'
+,p_status=>'PUBLIC'
+,p_is_default=>'Y'
+,p_report_columns=>'DBID:PARTICIPANT_NAME:COHORT:CODE:COHORT_CODE'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(40788531027081815)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(40787830436081808)
+,p_button_name=>'Create'
+,p_button_action=>'REDIRECT_PAGE'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(36488526615850231)
+,p_button_image_alt=>'Create'
+,p_button_position=>'RIGHT_OF_IR_SEARCH_BAR'
+,p_button_redirect_url=>'f?p=&APP_ID.:13:&SESSION.::&DEBUG.::P13_DBID:'
+);
+end;
+/
+prompt --application/pages/page_00013
+begin
+wwv_flow_imp_page.create_page(
+ p_id=>13
+,p_name=>'Participant Form'
+,p_alias=>'PARTICIPANT-FORM'
+,p_step_title=>'Participant Form'
+,p_autocomplete_on_off=>'OFF'
+,p_page_template_options=>'#DEFAULT#'
+,p_protection_level=>'C'
+,p_page_component_map=>'02'
+,p_last_updated_by=>'MWONG'
+,p_last_upd_yyyymmddhh24miss=>'20230713110750'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(40813190298228407)
+,p_plug_name=>'Breadcrumb'
+,p_region_template_options=>'#DEFAULT#:t-BreadcrumbRegion--useBreadcrumbTitle'
+,p_component_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_imp.id(36386058427850175)
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'REGION_POSITION_01'
+,p_menu_id=>wwv_flow_imp.id(36312944925850135)
+,p_plug_source_type=>'NATIVE_BREADCRUMB'
+,p_menu_template_id=>wwv_flow_imp.id(36490172205850231)
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(40813709092228421)
+,p_plug_name=>'Participant Form'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_imp.id(36424165183850195)
+,p_plug_display_sequence=>10
+,p_query_type=>'TABLE'
+,p_query_table=>'PARTICIPANT'
+,p_include_rowid_column=>false
+,p_is_editable=>true
+,p_edit_operations=>'i:u:d'
+,p_lost_update_check_type=>'VALUES'
+,p_plug_source_type=>'NATIVE_FORM'
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(40818598437228432)
+,p_button_sequence=>30
+,p_button_plug_id=>wwv_flow_imp.id(40813709092228421)
+,p_button_name=>'SAVE'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(36488526615850231)
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Apply Changes'
+,p_button_position=>'CHANGE'
+,p_button_condition=>'P13_DBID'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
+,p_database_action=>'UPDATE'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(40817549596228431)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(40813709092228421)
+,p_button_name=>'CANCEL'
+,p_button_action=>'REDIRECT_PAGE'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(36488526615850231)
+,p_button_image_alt=>'Cancel'
+,p_button_position=>'CLOSE'
+,p_button_redirect_url=>'f?p=&APP_ID.:12:&SESSION.::&DEBUG.:::'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(40818976826228432)
+,p_button_sequence=>40
+,p_button_plug_id=>wwv_flow_imp.id(40813709092228421)
+,p_button_name=>'CREATE'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(36488526615850231)
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Create'
+,p_button_position=>'CREATE'
+,p_button_condition=>'P13_DBID'
+,p_button_condition_type=>'ITEM_IS_NULL'
+,p_database_action=>'INSERT'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(40818101012228431)
+,p_button_sequence=>20
+,p_button_plug_id=>wwv_flow_imp.id(40813709092228421)
+,p_button_name=>'DELETE'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(36488526615850231)
+,p_button_image_alt=>'Delete'
+,p_button_position=>'DELETE'
+,p_button_execute_validations=>'N'
+,p_confirm_message=>'&APP_TEXT$DELETE_MSG!RAW.'
+,p_confirm_style=>'danger'
+,p_button_condition=>'P13_DBID'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
+,p_database_action=>'DELETE'
+);
+wwv_flow_imp_page.create_page_branch(
+ p_id=>wwv_flow_imp.id(40819222815228432)
+,p_branch_name=>'Go To Page 1'
+,p_branch_action=>'f?p=&APP_ID.:12:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
+,p_branch_point=>'AFTER_PROCESSING'
+,p_branch_type=>'REDIRECT_URL'
+,p_branch_sequence=>1
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(40814011999228423)
+,p_name=>'P13_DBID'
+,p_source_data_type=>'NUMBER'
+,p_is_primary_key=>true
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(40813709092228421)
+,p_item_source_plug_id=>wwv_flow_imp.id(40813709092228421)
+,p_source=>'DBID'
+,p_source_type=>'REGION_SOURCE_COLUMN'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_protection_level=>'S'
+,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(40814475177228426)
+,p_name=>'P13_PARTICIPANT_NAME'
+,p_source_data_type=>'VARCHAR2'
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(40813709092228421)
+,p_item_source_plug_id=>wwv_flow_imp.id(40813709092228421)
+,p_use_cache_before_default=>'NO'
+,p_prompt=>'Participant Name'
+,p_source=>'PARTICIPANT_NAME'
+,p_source_type=>'REGION_SOURCE_COLUMN'
+,p_display_as=>'NATIVE_TEXTAREA'
+,p_cSize=>60
+,p_cMaxlength=>500
+,p_cHeight=>4
+,p_label_alignment=>'RIGHT'
+,p_field_template=>wwv_flow_imp.id(36485733055850228)
+,p_item_template_options=>'#DEFAULT#'
+,p_is_persistent=>'N'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'N'
+,p_attribute_03=>'N'
+,p_attribute_04=>'BOTH'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(40814858829228428)
+,p_name=>'P13_COHORT'
+,p_source_data_type=>'NUMBER'
+,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_imp.id(40813709092228421)
+,p_item_source_plug_id=>wwv_flow_imp.id(40813709092228421)
+,p_use_cache_before_default=>'NO'
+,p_prompt=>'Cohort'
+,p_source=>'COHORT'
+,p_source_type=>'REGION_SOURCE_COLUMN'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
+,p_cSize=>32
+,p_cMaxlength=>255
+,p_cHeight=>1
+,p_label_alignment=>'RIGHT'
+,p_field_template=>wwv_flow_imp.id(36485733055850228)
+,p_item_template_options=>'#DEFAULT#'
+,p_is_persistent=>'N'
+,p_attribute_03=>'left'
+,p_attribute_04=>'decimal'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(40815291708228428)
+,p_name=>'P13_CODE'
+,p_source_data_type=>'NUMBER'
+,p_item_sequence=>40
+,p_item_plug_id=>wwv_flow_imp.id(40813709092228421)
+,p_item_source_plug_id=>wwv_flow_imp.id(40813709092228421)
+,p_use_cache_before_default=>'NO'
+,p_prompt=>'Code'
+,p_source=>'CODE'
+,p_source_type=>'REGION_SOURCE_COLUMN'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
+,p_cSize=>32
+,p_cMaxlength=>255
+,p_cHeight=>1
+,p_label_alignment=>'RIGHT'
+,p_field_template=>wwv_flow_imp.id(36485733055850228)
+,p_item_template_options=>'#DEFAULT#'
+,p_is_persistent=>'N'
+,p_attribute_03=>'left'
+,p_attribute_04=>'decimal'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(40815606304228429)
+,p_name=>'P13_COHORT_CODE'
+,p_source_data_type=>'NUMBER'
+,p_item_sequence=>50
+,p_item_plug_id=>wwv_flow_imp.id(40813709092228421)
+,p_item_source_plug_id=>wwv_flow_imp.id(40813709092228421)
+,p_use_cache_before_default=>'NO'
+,p_prompt=>'Cohort Code'
+,p_source=>'COHORT_CODE'
+,p_source_type=>'REGION_SOURCE_COLUMN'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
+,p_cSize=>32
+,p_cMaxlength=>255
+,p_cHeight=>1
+,p_label_alignment=>'RIGHT'
+,p_field_template=>wwv_flow_imp.id(36485733055850228)
+,p_item_template_options=>'#DEFAULT#'
+,p_is_persistent=>'N'
+,p_attribute_03=>'left'
+,p_attribute_04=>'decimal'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(40820178725228434)
+,p_process_sequence=>10
+,p_process_point=>'AFTER_SUBMIT'
+,p_region_id=>wwv_flow_imp.id(40813709092228421)
+,p_process_type=>'NATIVE_FORM_DML'
+,p_process_name=>'Process form participant data form'
+,p_attribute_01=>'REGION_SOURCE'
+,p_attribute_05=>'Y'
+,p_attribute_06=>'Y'
+,p_attribute_08=>'Y'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(40819751059228434)
+,p_process_sequence=>10
+,p_process_point=>'BEFORE_HEADER'
+,p_region_id=>wwv_flow_imp.id(40813709092228421)
+,p_process_type=>'NATIVE_FORM_INIT'
+,p_process_name=>'Initialize form participant data form'
 );
 end;
 /
