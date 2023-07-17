@@ -28,14 +28,14 @@ prompt APPLICATION 120 - BCCSU
 -- Application Export:
 --   Application:     120
 --   Name:            BCCSU
---   Date and Time:   15:46 Friday July 14, 2023
+--   Date and Time:   09:40 Monday July 17, 2023
 --   Exported By:     MWONG
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                      7
 --       Items:                  164
---       Processes:               23
---       Regions:                 40
+--       Processes:               24
+--       Regions:                 41
 --       Buttons:                 14
 --       Dynamic Actions:         28
 --     Shared Components:
@@ -111,8 +111,8 @@ wwv_flow_imp.create_flow(
 ,p_auto_time_zone=>'N'
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'BCCSU'
-,p_last_updated_by=>'mwong'
-,p_last_upd_yyyymmddhh24miss=>'20230714154624'
+,p_last_updated_by=>'MWONG'
+,p_last_upd_yyyymmddhh24miss=>'20230717093923'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>4
 ,p_print_server_type=>'INSTANCE'
@@ -186,6 +186,18 @@ wwv_flow_imp_shared.create_list_item(
 ,p_list_item_current_for_pages=>'12'
 );
 wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(40812696227228406)
+,p_list_item_display_sequence=>31
+,p_list_item_link_text=>'Participant Form'
+,p_list_item_link_target=>'f?p=&APP_ID.:13:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa-clipboard-list'
+,p_list_item_disp_cond_type=>'ITEM_IS_NOT_NULL'
+,p_list_item_disp_condition=>'P13_DBID'
+,p_parent_list_item_id=>wwv_flow_imp.id(40807675639219343)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'13'
+);
+wwv_flow_imp_shared.create_list_item(
  p_id=>wwv_flow_imp.id(40029162136241196)
 ,p_list_item_display_sequence=>40
 ,p_list_item_link_text=>'Neurobehavioral Medical Screen'
@@ -195,17 +207,6 @@ wwv_flow_imp_shared.create_list_item(
 ,p_list_item_disp_condition=>'P13_DBID'
 ,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
 ,p_list_item_current_for_pages=>'3'
-);
-wwv_flow_imp_shared.create_list_item(
- p_id=>wwv_flow_imp.id(40812696227228406)
-,p_list_item_display_sequence=>50
-,p_list_item_link_text=>'Participant Form'
-,p_list_item_link_target=>'f?p=&APP_ID.:13:&SESSION.::&DEBUG.::::'
-,p_list_item_icon=>'fa-clipboard-list'
-,p_list_item_disp_cond_type=>'ITEM_IS_NOT_NULL'
-,p_list_item_disp_condition=>'P13_DBID'
-,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
-,p_list_item_current_for_pages=>'13'
 );
 end;
 /
@@ -15955,7 +15956,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230714154600'
+,p_last_upd_yyyymmddhh24miss=>'20230717093923'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(40029696306241200)
@@ -16226,16 +16227,14 @@ wwv_flow_imp_page.create_page_item(
 ,p_pre_element_text=>'6. How many times in your life? &nbsp;'
 ,p_source=>'UNCONSCIOUS_QUANTITY'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
 ,p_cSize=>30
 ,p_grid_label_column_span=>0
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
 ,p_is_persistent=>'N'
-,p_attribute_01=>'N'
-,p_attribute_02=>'N'
-,p_attribute_04=>'TEXT'
-,p_attribute_05=>'BOTH'
+,p_attribute_03=>'left'
+,p_attribute_04=>'decimal'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40030621057241217)
@@ -16255,7 +16254,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40031043967241220)
 ,p_name=>'P3_PARTICIPANT_DBID'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>20
+,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_item_source_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_source=>'PARTICIPANT_DBID'
@@ -16267,7 +16266,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40031416491241223)
 ,p_name=>'P3_OVERDOSE'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>50
+,p_item_sequence=>60
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_item_source_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_source=>'OVERDOSE'
@@ -16286,7 +16285,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40031895035241223)
 ,p_name=>'P3_OVERDOSE_OPIOIDS'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>70
+,p_item_sequence=>80
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_item_source_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_source=>'OVERDOSE_OPIOIDS'
@@ -16305,7 +16304,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40032244047241223)
 ,p_name=>'P3_OVERDOSE_SEDATIVES'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>90
+,p_item_sequence=>100
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_item_source_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_source=>'OVERDOSE_SEDATIVES'
@@ -16324,52 +16323,48 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40032678453241223)
 ,p_name=>'P3_NUM_OVERDOSE'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>100
+,p_item_sequence=>110
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_item_source_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_pre_element_text=>'4. How many times in your life have you overdosed? &nbsp;'
 ,p_source=>'NUM_OVERDOSE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
 ,p_cSize=>32
 ,p_cMaxlength=>255
 ,p_grid_label_column_span=>0
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
 ,p_is_persistent=>'N'
-,p_attribute_01=>'N'
-,p_attribute_02=>'N'
-,p_attribute_04=>'TEXT'
-,p_attribute_05=>'BOTH'
+,p_attribute_03=>'left'
+,p_attribute_04=>'decimal'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40033077280241223)
 ,p_name=>'P3_MOST_SEVERE'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>120
+,p_item_sequence=>130
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_item_source_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_pre_element_text=>'a. When was this incident? &nbsp; '
 ,p_post_element_text=>'&nbsp; (month/year)'
 ,p_source=>'MOST_SEVERE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
 ,p_cSize=>32
 ,p_cMaxlength=>50
 ,p_grid_label_column_span=>1
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
 ,p_is_persistent=>'N'
-,p_attribute_01=>'N'
-,p_attribute_02=>'N'
-,p_attribute_04=>'TEXT'
-,p_attribute_05=>'NONE'
+,p_attribute_03=>'left'
+,p_attribute_04=>'decimal'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40033407889241225)
 ,p_name=>'P3_TYPE'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>140
+,p_item_sequence=>150
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_item_source_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_source=>'TYPE'
@@ -16388,7 +16383,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40033880548241225)
 ,p_name=>'P3_AMBULANCE'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>160
+,p_item_sequence=>170
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_item_source_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_source=>'AMBULANCE'
@@ -16407,7 +16402,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40034221956241225)
 ,p_name=>'P3_ER_HOSPITAL'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>180
+,p_item_sequence=>190
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_item_source_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_source=>'ER_HOSPITAL'
@@ -16426,7 +16421,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40034603845241225)
 ,p_name=>'P3_NARCAN_NALOXONE'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>200
+,p_item_sequence=>220
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_item_source_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_source=>'NARCAN_NALOXONE'
@@ -16445,29 +16440,27 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40035064671241225)
 ,p_name=>'P3_NARCAN_NALOXONE_QUANTITY'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>210
+,p_item_sequence=>230
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_item_source_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_pre_element_text=>'If yes, how much? &nbsp;'
 ,p_source=>'NARCAN_NALOXONE_QUANTITY'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
 ,p_cSize=>32
 ,p_cMaxlength=>255
 ,p_grid_label_column_span=>2
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
 ,p_is_persistent=>'N'
-,p_attribute_01=>'N'
-,p_attribute_02=>'N'
-,p_attribute_04=>'TEXT'
-,p_attribute_05=>'BOTH'
+,p_attribute_03=>'left'
+,p_attribute_04=>'decimal'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40035440122241225)
 ,p_name=>'P3_UNCONSCIOUS'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>220
+,p_item_sequence=>240
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_item_source_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_pre_element_text=>'f. Did you lose consciousness? &nbsp;'
@@ -16487,7 +16480,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40035878457241226)
 ,p_name=>'P3_UNCONSCIOUS_DURATION'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>240
+,p_item_sequence=>260
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_item_source_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_source=>'UNCONSCIOUS_DURATION'
@@ -16505,7 +16498,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40036273441241226)
 ,p_name=>'P3_SIDE_EFFECTS_QUESTION'
-,p_item_sequence=>250
+,p_item_sequence=>270
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_pre_element_text=>'g. Did you have any headaches, nausea, vomiting, blurred vision, change in vision, or confusion after the incident? &nbsp;'
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -16523,7 +16516,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40036672311241226)
 ,p_name=>'P3_SIDE_EFFECTS_DURATION'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>280
+,p_item_sequence=>300
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_item_source_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_source=>'SIDE_EFFECTS_DURATION'
@@ -16541,7 +16534,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40037006426241226)
 ,p_name=>'P3_HYPOXIC_ANOXIC_QUESTION'
-,p_item_sequence=>290
+,p_item_sequence=>310
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_prompt=>'h. Were you diagnosed by a doctor with a hypoxic and/or anoxic brain injury (in other words, brain injury due to a lack of oxygen) due to toxic drug poisoning?'
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -16564,16 +16557,14 @@ wwv_flow_imp_page.create_page_item(
 ,p_pre_element_text=>'a. How old were you? &nbsp;'
 ,p_source=>'UNCONSCIOUS_SEVERITY_AGE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
 ,p_cSize=>30
 ,p_grid_label_column_span=>2
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
 ,p_is_persistent=>'N'
-,p_attribute_01=>'N'
-,p_attribute_02=>'N'
-,p_attribute_04=>'TEXT'
-,p_attribute_05=>'BOTH'
+,p_attribute_03=>'left'
+,p_attribute_04=>'decimal'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40055674231713302)
@@ -16680,16 +16671,14 @@ wwv_flow_imp_page.create_page_item(
 ,p_pre_element_text=>'Length of stay &nbsp;'
 ,p_source=>'HOSPITAL_ATTENDANCE_LENGTH'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
 ,p_cSize=>30
 ,p_grid_label_column_span=>4
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
 ,p_is_persistent=>'N'
-,p_attribute_01=>'N'
-,p_attribute_02=>'N'
-,p_attribute_04=>'TEXT'
-,p_attribute_05=>'BOTH'
+,p_attribute_03=>'left'
+,p_attribute_04=>'decimal'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40056225202713308)
@@ -17212,17 +17201,15 @@ wwv_flow_imp_page.create_page_item(
 ,p_prompt=>'a. If yes, which grade? '
 ,p_source=>'GRADE_NUMBER'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
 ,p_cSize=>30
 ,p_grid_column=>2
 ,p_grid_label_column_span=>3
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
 ,p_is_persistent=>'N'
-,p_attribute_01=>'N'
-,p_attribute_02=>'N'
-,p_attribute_04=>'TEXT'
-,p_attribute_05=>'BOTH'
+,p_attribute_03=>'left'
+,p_attribute_04=>'decimal'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40060670690730502)
@@ -17415,7 +17402,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40064092819730536)
 ,p_name=>'P3_MOST_SEVERE_INFO'
-,p_item_sequence=>110
+,p_item_sequence=>120
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_pre_element_text=>'The following questions are about the most severe incident:'
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -17430,7 +17417,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40064262562730538)
 ,p_name=>'P3_TYPE_QUESTION'
-,p_item_sequence=>130
+,p_item_sequence=>140
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_pre_element_text=>'b. What type of overdose/non-fatal toxic drug poisoning do you think it was?'
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -17445,7 +17432,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40064489420730540)
 ,p_name=>'P3_AMBULANCE_QUESTION'
-,p_item_sequence=>150
+,p_item_sequence=>160
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_pre_element_text=>'c. Were you seen by an ambulance?'
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -17460,7 +17447,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40064568880730541)
 ,p_name=>'P3_ER_HOSPITAL_QUESTION'
-,p_item_sequence=>170
+,p_item_sequence=>180
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_pre_element_text=>'d. Were you taken to an ER/hospital?'
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -17475,7 +17462,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40064616132730542)
 ,p_name=>'P3_NARCAN_NALOXONE_QUESTION'
-,p_item_sequence=>190
+,p_item_sequence=>210
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_pre_element_text=>'e. Were you given Narcan/naloxone?'
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -17490,7 +17477,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40064764146730543)
 ,p_name=>'P3_UNCONSCIOUS_DURATION_QUESTION'
-,p_item_sequence=>230
+,p_item_sequence=>250
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_pre_element_text=>'i. If yes, how long was the loss of consciousness? '
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -17506,7 +17493,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40064820052730544)
 ,p_name=>'P3_SIDE_EFFECTS'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>260
+,p_item_sequence=>280
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_item_source_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_source=>'SIDE_EFFECTS'
@@ -17524,7 +17511,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40064961502730545)
 ,p_name=>'P3_SIDE_EFFECTS_DURATION_QUESTION'
-,p_item_sequence=>270
+,p_item_sequence=>290
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_pre_element_text=>'i. If yes, how long did these last? '
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -17540,7 +17527,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40065034599730546)
 ,p_name=>'P3_HYPOXIC_ANOXIC'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>300
+,p_item_sequence=>320
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_item_source_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_source=>'HYPOXIC_ANOXIC'
@@ -17763,7 +17750,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40286255697719315)
 ,p_name=>'P3_OVERDOSE_QUESTION'
-,p_item_sequence=>30
+,p_item_sequence=>40
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_prompt=>'1. Have you ever overdosed (i.e., where you had a negative reaction from using too much drugs or had a bad trip)?'
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -17778,7 +17765,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40286329402719316)
 ,p_name=>'P3_OVERDOSE_OPIOIDS_QUESTION'
-,p_item_sequence=>60
+,p_item_sequence=>70
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_prompt=>'2. Have you ever had an overdose when taking opioids? Signs of an opioid overdose include: shallow breathing or stopped breathing, snoring, or gurgling sounds, blue lips or fingertips, floppy arms or legs, or no response to stimulus '
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -17793,7 +17780,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40286474217719317)
 ,p_name=>'P3_OVERDOSE_SEDATIVES_QUESTION'
-,p_item_sequence=>80
+,p_item_sequence=>90
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_prompt=>'3. Have you ever had an overdose when taking sedatives and/or tranquilizers? Signs of a sedative/tranquilizer overdose include: shallow breathing or stopped breathing, deep sedation, little/no improvement after naloxone '
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
@@ -18107,16 +18094,14 @@ wwv_flow_imp_page.create_page_item(
 ,p_prompt=>'Last grade fully completed'
 ,p_source=>'LEVEL_OF_EDUCATION_LAST_GRADE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
 ,p_cSize=>30
 ,p_grid_column=>3
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
 ,p_is_persistent=>'N'
-,p_attribute_01=>'N'
-,p_attribute_02=>'N'
-,p_attribute_04=>'TEXT'
-,p_attribute_05=>'BOTH'
+,p_attribute_03=>'left'
+,p_attribute_04=>'decimal'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40424752071941534)
@@ -18894,7 +18879,7 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_triggering_element=>'P3_HIDDEN_VAR'
 ,p_condition_element=>'P3_HIDDEN_VAR'
 ,p_triggering_condition_type=>'EQUALS'
-,p_triggering_expression=>'hide'
+,p_triggering_expression=>'show'
 ,p_bind_type=>'bind'
 ,p_execution_type=>'IMMEDIATE'
 ,p_bind_event_type=>'change'
@@ -18923,7 +18908,7 @@ wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(41071330809548908)
 ,p_event_id=>wwv_flow_imp.id(41070892279548903)
 ,p_event_result=>'FALSE'
-,p_action_sequence=>20
+,p_action_sequence=>30
 ,p_execute_on_page_init=>'Y'
 ,p_action=>'NATIVE_SET_VALUE'
 ,p_affected_elements_type=>'ITEM'
@@ -19182,8 +19167,7 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action=>'NATIVE_SHOW'
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P3_UNCONSCIOUS_QUANTITY,P3_UNCONSCIOUS_SEVERITY_INFO,P3_UNCONSCIOUS_SEVERITY_AGE,P3_UNCONSCIOUS_CAUSE_QUESTION,P3_UNCONSCIOUS_CAUSE,P3_UNCONSCIOUS_DURATION_1_QUESTION,P3_UNCONSCIOUS_DURATION_1,P3_UNCONSCIOUS_DISCUSSION_QUESTION,P3_UNCONSCIOUS_DISCUSS'
-||'ION,P3_CLEAR_MEMORY_DURATION_QUESTION,P3_CLEAR_MEMORY_DURATION,P3_HOSPITAL_ATTENDANCE_QUESTION,P3_HOSPITAL_ATTENDANCE,P3_HOSPITAL_ATTENDANCE_LENGTH,P3_HOSPITAL_ATTENDANCE_PARAMEDICS,P3_SYMPTOMS_QUESTION,P3_SYMPTOMS,P3_SYMPTOMS_DURATION_QUESTION,P3_SY'
-||'MPTOMS_DURATION'
+||'ION,P3_CLEAR_MEMORY_DURATION_QUESTION,P3_CLEAR_MEMORY_DURATION,P3_HOSPITAL_ATTENDANCE_QUESTION,P3_HOSPITAL_ATTENDANCE,P3_SYMPTOMS_QUESTION,P3_SYMPTOMS,P3_SYMPTOMS_DURATION_QUESTION,P3_SYMPTOMS_DURATION'
 );
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(41073308772548928)
@@ -19194,8 +19178,7 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action=>'NATIVE_HIDE'
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P3_UNCONSCIOUS_QUANTITY,P3_UNCONSCIOUS_SEVERITY_INFO,P3_UNCONSCIOUS_SEVERITY_AGE,P3_UNCONSCIOUS_CAUSE_QUESTION,P3_UNCONSCIOUS_CAUSE,P3_UNCONSCIOUS_DURATION_1_QUESTION,P3_UNCONSCIOUS_DURATION_1,P3_UNCONSCIOUS_DISCUSSION_QUESTION,P3_UNCONSCIOUS_DISCUSS'
-||'ION,P3_CLEAR_MEMORY_DURATION_QUESTION,P3_CLEAR_MEMORY_DURATION,P3_HOSPITAL_ATTENDANCE_QUESTION,P3_HOSPITAL_ATTENDANCE,P3_HOSPITAL_ATTENDANCE_LENGTH,P3_HOSPITAL_ATTENDANCE_PARAMEDICS,P3_SYMPTOMS_QUESTION,P3_SYMPTOMS,P3_SYMPTOMS_DURATION_QUESTION,P3_SY'
-||'MPTOMS_DURATION'
+||'ION,P3_CLEAR_MEMORY_DURATION_QUESTION,P3_CLEAR_MEMORY_DURATION,P3_HOSPITAL_ATTENDANCE_QUESTION,P3_HOSPITAL_ATTENDANCE,P3_SYMPTOMS_QUESTION,P3_SYMPTOMS,P3_SYMPTOMS_DURATION_QUESTION,P3_SYMPTOMS_DURATION'
 );
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(41073414025548929)
@@ -19206,8 +19189,7 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action=>'NATIVE_SET_VALUE'
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P3_UNCONSCIOUS_QUANTITY,P3_UNCONSCIOUS_SEVERITY_INFO,P3_UNCONSCIOUS_SEVERITY_AGE,P3_UNCONSCIOUS_CAUSE_QUESTION,P3_UNCONSCIOUS_CAUSE,P3_UNCONSCIOUS_DURATION_1_QUESTION,P3_UNCONSCIOUS_DURATION_1,P3_UNCONSCIOUS_DISCUSSION_QUESTION,P3_UNCONSCIOUS_DISCUSS'
-||'ION,P3_CLEAR_MEMORY_DURATION_QUESTION,P3_CLEAR_MEMORY_DURATION,P3_HOSPITAL_ATTENDANCE_QUESTION,P3_HOSPITAL_ATTENDANCE,P3_HOSPITAL_ATTENDANCE_LENGTH,P3_HOSPITAL_ATTENDANCE_PARAMEDICS,P3_SYMPTOMS_QUESTION,P3_SYMPTOMS,P3_SYMPTOMS_DURATION_QUESTION,P3_SY'
-||'MPTOMS_DURATION'
+||'ION,P3_CLEAR_MEMORY_DURATION_QUESTION,P3_CLEAR_MEMORY_DURATION,P3_HOSPITAL_ATTENDANCE_QUESTION,P3_HOSPITAL_ATTENDANCE,P3_SYMPTOMS_QUESTION,P3_SYMPTOMS,P3_SYMPTOMS_DURATION_QUESTION,P3_SYMPTOMS_DURATION'
 ,p_attribute_01=>'STATIC_ASSIGNMENT'
 ,p_attribute_09=>'N'
 ,p_wait_for_result=>'Y'
@@ -19394,8 +19376,8 @@ wwv_flow_imp_page.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'18'
-,p_last_updated_by=>'mwong'
-,p_last_upd_yyyymmddhh24miss=>'20230714154624'
+,p_last_updated_by=>'MWONG'
+,p_last_upd_yyyymmddhh24miss=>'20230714154817'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(40787830436081808)
@@ -19405,6 +19387,8 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_template=>wwv_flow_imp.id(36372529033850168)
 ,p_plug_display_sequence=>10
 ,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_grid_column_span=>8
+,p_plug_display_column=>3
 ,p_query_type=>'SQL'
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select DBID,',
@@ -19450,11 +19434,10 @@ wwv_flow_imp_page.create_worksheet(
 ,p_max_row_count=>'1000000'
 ,p_pagination_type=>'ROWS_X_TO_Y'
 ,p_pagination_display_pos=>'BOTTOM_RIGHT'
+,p_show_actions_menu=>'N'
 ,p_report_list_mode=>'TABS'
 ,p_lazy_loading=>false
 ,p_show_detail_link=>'C'
-,p_show_notify=>'Y'
-,p_download_formats=>'CSV:HTML:XLSX:PDF'
 ,p_enable_mail_download=>'Y'
 ,p_detail_link=>'f?p=&APP_ID.:13:&SESSION.::&DEBUG.::P13_DBID:#DBID#'
 ,p_detail_link_text=>'<img src="#APEX_FILES#app_ui/img/icons/apex-edit-pencil.png" class="apex-edit-pencil" alt="">'
@@ -19545,19 +19528,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230713110750'
-);
-wwv_flow_imp_page.create_page_plug(
- p_id=>wwv_flow_imp.id(40813190298228407)
-,p_plug_name=>'Breadcrumb'
-,p_region_template_options=>'#DEFAULT#:t-BreadcrumbRegion--useBreadcrumbTitle'
-,p_component_template_options=>'#DEFAULT#'
-,p_plug_template=>wwv_flow_imp.id(36386058427850175)
-,p_plug_display_sequence=>10
-,p_plug_display_point=>'REGION_POSITION_01'
-,p_menu_id=>wwv_flow_imp.id(36312944925850135)
-,p_plug_source_type=>'NATIVE_BREADCRUMB'
-,p_menu_template_id=>wwv_flow_imp.id(36490172205850231)
+,p_last_upd_yyyymmddhh24miss=>'20230714164638'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(40813709092228421)
@@ -19565,6 +19536,8 @@ wwv_flow_imp_page.create_page_plug(
 ,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
 ,p_plug_template=>wwv_flow_imp.id(36424165183850195)
 ,p_plug_display_sequence=>10
+,p_plug_grid_column_span=>3
+,p_plug_display_column=>4
 ,p_query_type=>'TABLE'
 ,p_query_table=>'PARTICIPANT'
 ,p_include_rowid_column=>false
@@ -19573,6 +19546,28 @@ wwv_flow_imp_page.create_page_plug(
 ,p_lost_update_check_type=>'VALUES'
 ,p_plug_source_type=>'NATIVE_FORM'
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(41073508054548930)
+,p_plug_name=>'Personal Info'
+,p_parent_plug_id=>wwv_flow_imp.id(40813709092228421)
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_imp.id(36424165183850195)
+,p_plug_display_sequence=>20
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(41073717015548932)
+,p_plug_name=>'ID Codes'
+,p_parent_plug_id=>wwv_flow_imp.id(40813709092228421)
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_imp.id(36424165183850195)
+,p_plug_display_sequence=>30
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(40818598437228432)
@@ -19626,20 +19621,47 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_template_id=>wwv_flow_imp.id(36488526615850231)
 ,p_button_image_alt=>'Delete'
 ,p_button_position=>'DELETE'
-,p_button_execute_validations=>'N'
-,p_confirm_message=>'&APP_TEXT$DELETE_MSG!RAW.'
-,p_confirm_style=>'danger'
+,p_confirm_message=>'Successfully Deleted'
+,p_confirm_style=>'success'
 ,p_button_condition=>'P13_DBID'
 ,p_button_condition_type=>'ITEM_IS_NOT_NULL'
 ,p_database_action=>'DELETE'
 );
 wwv_flow_imp_page.create_page_branch(
  p_id=>wwv_flow_imp.id(40819222815228432)
-,p_branch_name=>'Go To Page 1'
+,p_branch_name=>'Go To Page 13'
+,p_branch_action=>'f?p=&APP_ID.:13:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
+,p_branch_point=>'AFTER_PROCESSING'
+,p_branch_type=>'REDIRECT_URL'
+,p_branch_when_button_id=>wwv_flow_imp.id(40818976826228432)
+,p_branch_sequence=>1
+);
+wwv_flow_imp_page.create_page_branch(
+ p_id=>wwv_flow_imp.id(41074007842548935)
+,p_branch_name=>'Go To Page 13'
+,p_branch_action=>'f?p=&APP_ID.:13:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
+,p_branch_point=>'AFTER_PROCESSING'
+,p_branch_type=>'REDIRECT_URL'
+,p_branch_when_button_id=>wwv_flow_imp.id(40818598437228432)
+,p_branch_sequence=>11
+);
+wwv_flow_imp_page.create_page_branch(
+ p_id=>wwv_flow_imp.id(41074266386548937)
+,p_branch_name=>'Go To Page 12'
 ,p_branch_action=>'f?p=&APP_ID.:12:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
 ,p_branch_point=>'AFTER_PROCESSING'
 ,p_branch_type=>'REDIRECT_URL'
-,p_branch_sequence=>1
+,p_branch_when_button_id=>wwv_flow_imp.id(40817549596228431)
+,p_branch_sequence=>21
+);
+wwv_flow_imp_page.create_page_branch(
+ p_id=>wwv_flow_imp.id(41074388921548938)
+,p_branch_name=>'Go To Page 12'
+,p_branch_action=>'f?p=&APP_ID.:12:&SESSION.::&DEBUG.:CR,:P13_DBID:&success_msg=#SUCCESS_MSG#'
+,p_branch_point=>'AFTER_PROCESSING'
+,p_branch_type=>'REDIRECT_URL'
+,p_branch_when_button_id=>wwv_flow_imp.id(40818101012228431)
+,p_branch_sequence=>31
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40814011999228423)
@@ -19659,43 +19681,37 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40814475177228426)
 ,p_name=>'P13_PARTICIPANT_NAME'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>20
-,p_item_plug_id=>wwv_flow_imp.id(40813709092228421)
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(41073508054548930)
 ,p_item_source_plug_id=>wwv_flow_imp.id(40813709092228421)
-,p_use_cache_before_default=>'NO'
-,p_prompt=>'Participant Name'
+,p_prompt=>'Name'
 ,p_source=>'PARTICIPANT_NAME'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'NATIVE_TEXTAREA'
-,p_cSize=>60
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>32
 ,p_cMaxlength=>500
-,p_cHeight=>4
-,p_label_alignment=>'RIGHT'
-,p_field_template=>wwv_flow_imp.id(36485733055850228)
+,p_field_template=>wwv_flow_imp.id(36486725977850229)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
-,p_attribute_01=>'Y'
+,p_attribute_01=>'N'
 ,p_attribute_02=>'N'
-,p_attribute_03=>'N'
-,p_attribute_04=>'BOTH'
+,p_attribute_04=>'TEXT'
+,p_attribute_05=>'BOTH'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40814858829228428)
 ,p_name=>'P13_COHORT'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>30
-,p_item_plug_id=>wwv_flow_imp.id(40813709092228421)
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(41073717015548932)
 ,p_item_source_plug_id=>wwv_flow_imp.id(40813709092228421)
-,p_use_cache_before_default=>'NO'
 ,p_prompt=>'Cohort'
 ,p_source=>'COHORT'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_NUMBER_FIELD'
 ,p_cSize=>32
 ,p_cMaxlength=>255
-,p_cHeight=>1
-,p_label_alignment=>'RIGHT'
-,p_field_template=>wwv_flow_imp.id(36485733055850228)
+,p_field_template=>wwv_flow_imp.id(36486725977850229)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
 ,p_attribute_03=>'left'
@@ -19705,19 +19721,16 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40815291708228428)
 ,p_name=>'P13_CODE'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>40
-,p_item_plug_id=>wwv_flow_imp.id(40813709092228421)
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(41073717015548932)
 ,p_item_source_plug_id=>wwv_flow_imp.id(40813709092228421)
-,p_use_cache_before_default=>'NO'
 ,p_prompt=>'Code'
 ,p_source=>'CODE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_NUMBER_FIELD'
 ,p_cSize=>32
 ,p_cMaxlength=>255
-,p_cHeight=>1
-,p_label_alignment=>'RIGHT'
-,p_field_template=>wwv_flow_imp.id(36485733055850228)
+,p_field_template=>wwv_flow_imp.id(36486725977850229)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
 ,p_attribute_03=>'left'
@@ -19727,19 +19740,16 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40815606304228429)
 ,p_name=>'P13_COHORT_CODE'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>50
-,p_item_plug_id=>wwv_flow_imp.id(40813709092228421)
+,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_imp.id(41073717015548932)
 ,p_item_source_plug_id=>wwv_flow_imp.id(40813709092228421)
-,p_use_cache_before_default=>'NO'
 ,p_prompt=>'Cohort Code'
 ,p_source=>'COHORT_CODE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_NUMBER_FIELD'
 ,p_cSize=>32
 ,p_cMaxlength=>255
-,p_cHeight=>1
-,p_label_alignment=>'RIGHT'
-,p_field_template=>wwv_flow_imp.id(36485733055850228)
+,p_field_template=>wwv_flow_imp.id(36486725977850229)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
 ,p_attribute_03=>'left'
@@ -19756,6 +19766,19 @@ wwv_flow_imp_page.create_page_process(
 ,p_attribute_05=>'Y'
 ,p_attribute_06=>'Y'
 ,p_attribute_08=>'Y'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(41074492210548939)
+,p_process_sequence=>20
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'custom message'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'apex_application.g_print_success_message :=''<span style="color:#ffffff">Successfully Submitted</span>'';',
+'end;'))
+,p_process_clob_language=>'PLSQL'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 );
 wwv_flow_imp_page.create_page_process(
