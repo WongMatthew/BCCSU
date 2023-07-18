@@ -28,16 +28,17 @@ prompt APPLICATION 120 - BCCSU
 -- Application Export:
 --   Application:     120
 --   Name:            BCCSU
---   Date and Time:   13:50 Monday July 17, 2023
+--   Date and Time:   09:25 Tuesday July 18, 2023
 --   Exported By:     MWONG
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                      7
 --       Items:                  164
+--       Validations:             44
 --       Processes:               24
 --       Regions:                 41
 --       Buttons:                 14
---       Dynamic Actions:         28
+--       Dynamic Actions:         27
 --     Shared Components:
 --       Logic:
 --         Build Options:          1
@@ -112,7 +113,7 @@ wwv_flow_imp.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'BCCSU'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230717132604'
+,p_last_upd_yyyymmddhh24miss=>'20230718092411'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>4
 ,p_print_server_type=>'INSTANCE'
@@ -15956,7 +15957,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230717132604'
+,p_last_upd_yyyymmddhh24miss=>'20230718092411'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(40029696306241200)
@@ -16224,12 +16225,13 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_sequence=>60
 ,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39921786943366842)
-,p_pre_element_text=>'6. How many times in your life? &nbsp;'
+,p_prompt=>'6. How many times in your life?'
 ,p_source=>'UNCONSCIOUS_QUANTITY'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_NUMBER_FIELD'
 ,p_cSize=>30
-,p_grid_label_column_span=>4
+,p_grid_column=>1
+,p_grid_label_column_span=>3
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
 ,p_is_persistent=>'N'
@@ -16348,17 +16350,22 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_source_plug_id=>wwv_flow_imp.id(40030297439241217)
 ,p_pre_element_text=>'a. When was this incident? &nbsp; '
 ,p_post_element_text=>'&nbsp; (month/year)'
+,p_format_mask=>'MON-RR'
 ,p_source=>'MOST_SEVERE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'NATIVE_NUMBER_FIELD'
+,p_display_as=>'NATIVE_DATE_PICKER_APEX'
 ,p_cSize=>32
 ,p_cMaxlength=>50
 ,p_grid_label_column_span=>1
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
 ,p_is_persistent=>'N'
-,p_attribute_03=>'left'
-,p_attribute_04=>'decimal'
+,p_attribute_01=>'N'
+,p_attribute_02=>'POPUP'
+,p_attribute_03=>'NONE'
+,p_attribute_06=>'NONE'
+,p_attribute_09=>'N'
+,p_attribute_11=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40033407889241225)
@@ -16569,14 +16576,14 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40055674231713302)
 ,p_name=>'P3_UNCONSCIOUS_CAUSE'
-,p_source_data_type=>'VARCHAR2'
+,p_source_data_type=>'NUMBER'
 ,p_item_sequence=>110
 ,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_source=>'UNCONSCIOUS_CAUSE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_RADIOGROUP'
-,p_lov=>'STATIC2:In a fall;In a fall,Being hit by something;Being hit by something,From a fight/assault;From a fight/assault,Sports injury;Sports injury,Workplace accident;Workplace accident,In a car accident;In a car accident,Other;Other'
+,p_lov=>'STATIC2:In a fall;1,Being hit by something;2,From a fight/assault;3,Sports injury;4,Workplace accident;5,In a car accident;6,Other;7'
 ,p_grid_label_column_span=>3
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
@@ -16947,6 +16954,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40058741411713333)
 ,p_name=>'P3_LEARNING_DISABILITY_DYSXLEXIA'
 ,p_source_data_type=>'NUMBER'
+,p_is_required=>true
 ,p_item_sequence=>150
 ,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39922094037366845)
@@ -16967,6 +16975,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40058884217713334)
 ,p_name=>'P3_LEARNING_DISABILITY_WRITING'
 ,p_source_data_type=>'NUMBER'
+,p_is_required=>true
 ,p_item_sequence=>180
 ,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39922094037366845)
@@ -16987,6 +16996,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40058995372713335)
 ,p_name=>'P3_LEARNING_DISABILITY_MATH'
 ,p_source_data_type=>'NUMBER'
+,p_is_required=>true
 ,p_item_sequence=>190
 ,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39922094037366845)
@@ -17007,6 +17017,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40059032323713336)
 ,p_name=>'P3_LEARNING_DISABILITY_ATTENTION'
 ,p_source_data_type=>'NUMBER'
+,p_is_required=>true
 ,p_item_sequence=>210
 ,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39922094037366845)
@@ -17048,14 +17059,14 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40059249729713338)
 ,p_name=>'P3_DIAGNOSER'
-,p_source_data_type=>'VARCHAR2'
+,p_source_data_type=>'NUMBER'
 ,p_item_sequence=>260
 ,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_source=>'DIAGNOSER'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_RADIOGROUP'
-,p_lov=>'STATIC2:Family Doctor;Family Doctor,Psychiatrist;Psychiatrist,Psychologist;Psychologist,Other;Other'
+,p_lov=>'STATIC2:Family Doctor;1,Psychiatrist;2,Psychologist;3,Other;4'
 ,p_grid_column=>1
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
@@ -17088,14 +17099,14 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40059454530713340)
 ,p_name=>'P3_WHY_DIAGNOSED'
-,p_source_data_type=>'VARCHAR2'
+,p_source_data_type=>'NUMBER'
 ,p_item_sequence=>300
 ,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_source=>'WHY_DIAGNOSED'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_RADIOGROUP'
-,p_lov=>'STATIC2:Following an injury;Following an injury,Due to academic or other difficulties;Due to academic or other difficulties,Other;Other'
+,p_lov=>'STATIC2:Following an injury;1,Due to academic or other difficulties;2,Other;3'
 ,p_grid_column=>1
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
@@ -17155,14 +17166,14 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40060364889713349)
 ,p_name=>'P3_HELD_BACK_WHY'
-,p_source_data_type=>'VARCHAR2'
+,p_source_data_type=>'NUMBER'
 ,p_item_sequence=>60
 ,p_item_plug_id=>wwv_flow_imp.id(39921879824366843)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39921879824366843)
 ,p_source=>'HELD_BACK_WHY'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_RADIOGROUP'
-,p_lov=>'STATIC2:Changed schools;Changed schools,Academic or other difficulties;Academic or other difficulties,Other;Other'
+,p_lov=>'STATIC2:Changed schools;1,Academic or other difficulties;2,Other;3'
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
 ,p_is_persistent=>'N'
@@ -17214,19 +17225,16 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40060670690730502)
 ,p_name=>'P3_LEVEL_OF_EDUCATION'
-,p_source_data_type=>'VARCHAR2'
+,p_source_data_type=>'NUMBER'
 ,p_item_sequence=>120
 ,p_item_plug_id=>wwv_flow_imp.id(39921879824366843)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39921879824366843)
 ,p_source=>'LEVEL_OF_EDUCATION'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_RADIOGROUP'
-,p_lov=>unistr('STATIC2(,):University PhD, MD, or equivalent degree (20 years education)University PhD, MD, or equivalent degree (20 years education)Law School completed (19 years education)Law School completed (19 years education)University Master\2019s degree co')
-||unistr('mpleted (18 years education)University Master\2019s degree completed (18 years education)University Bachelor\2019s degree completed (16 years education)University Bachelor\2019s degree completed (16 years education)University/college 2 year diploma completed')
-||' (14 years education)University/college 2 year diploma completed (14 years education)Certificate program or one year of university/college (1 year, full time)Certificate program or one year of university/college (1 year, full time)Number of equiv'
-||'alent full-time years in college/university if not obtaining a degreeNumber of equivalent full-time years in college/university if not obtaining a degreeTrade school (ALSO ASK ABOUT ANY OTHER EDUCATION, INCLUDING IF FINISH HIGH SCHOOL OR LAST GRADE'
-||' COMPLETEDTrade school (ALSO ASK ABOUT ANY OTHER EDUCATION, INCLUDING IF FINISH HIGH SCHOOL OR LAST GRADE COMPLETEDHigh school graduation (12 years education)High school graduation (12 years education)GEDGEDLess than high school graduationLess'
-||' than high school graduation'
+,p_lov=>unistr('STATIC2(,):University PhD, MD, or equivalent degree (20 years education)1Law School completed (19 years education)2University Master\2019s degree completed (18 years education)3University Bachelor\2019s degree completed (16 years education)4Univers')
+||'ity/college 2 year diploma completed (14 years education)5Certificate program or one year of university/college (1 year, full time)6Number of equivalent full-time years in college/university if not obtaining a degree7Trade school (ALSO ASK ABOU'
+||'T ANY OTHER EDUCATION, INCLUDING IF FINISH HIGH SCHOOL OR LAST GRADE COMPLETED8High school graduation (12 years education)9GED10Less than high school graduation11'
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
 ,p_is_persistent=>'N'
@@ -17258,14 +17266,14 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40060816265730504)
 ,p_name=>'P3_SCHOOL_TYPE'
-,p_source_data_type=>'VARCHAR2'
+,p_source_data_type=>'NUMBER'
 ,p_item_sequence=>180
 ,p_item_plug_id=>wwv_flow_imp.id(39921879824366843)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39921879824366843)
 ,p_source=>'SCHOOL_TYPE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_RADIOGROUP'
-,p_lov=>'STATIC2:College;College,Tech school;Tech school,University;University,Other;Other'
+,p_lov=>'STATIC2:College;1,Tech school;2,University;3,Other;4'
 ,p_grid_column=>1
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
@@ -17284,17 +17292,15 @@ wwv_flow_imp_page.create_page_item(
 ,p_prompt=>'Total years of education'
 ,p_source=>'DURATION_EDUCATION'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_display_as=>'NATIVE_NUMBER_FIELD'
 ,p_cSize=>30
 ,p_colspan=>6
 ,p_grid_column=>4
 ,p_field_template=>wwv_flow_imp.id(36485733055850228)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
-,p_attribute_01=>'N'
-,p_attribute_02=>'N'
-,p_attribute_04=>'TEXT'
-,p_attribute_05=>'BOTH'
+,p_attribute_03=>'left'
+,p_attribute_04=>'decimal'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40061531170730511)
@@ -17464,7 +17470,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P3_NARCAN_NALOXONE_QUESTION'
 ,p_item_sequence=>210
 ,p_item_plug_id=>wwv_flow_imp.id(40030297439241217)
-,p_pre_element_text=>'e. Were you given Narcan/naloxone?'
+,p_pre_element_text=>'e. Were you given Narcan/Naloxone?'
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
 ,p_grid_label_column_span=>1
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
@@ -17578,10 +17584,11 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_sequence=>120
 ,p_item_plug_id=>wwv_flow_imp.id(39921786943366842)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39921786943366842)
-,p_source=>'UNCONSCIOUS_CAUSE'
+,p_source=>'UNCONSCIOUS_CAUSE_OTHER'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_TEXT_FIELD'
 ,p_cSize=>30
+,p_cMaxlength=>500
 ,p_grid_label_column_span=>3
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
@@ -17729,9 +17736,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_04=>'Y'
 ,p_attribute_05=>'PLAIN'
 );
-end;
-/
-begin
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40286161744719314)
 ,p_name=>'P3_SLEEP_TYPE_QUESTION'
@@ -17762,6 +17766,9 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_04=>'Y'
 ,p_attribute_05=>'PLAIN'
 );
+end;
+/
+begin
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40286329402719316)
 ,p_name=>'P3_OVERDOSE_OPIOIDS_QUESTION'
@@ -17961,10 +17968,11 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_sequence=>270
 ,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39922094037366845)
-,p_source=>'DIAGNOSER'
+,p_source=>'DIAGNOSER_OTHER'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_TEXT_FIELD'
 ,p_cSize=>30
+,p_cMaxlength=>500
 ,p_grid_column=>1
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
@@ -18033,10 +18041,11 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_sequence=>80
 ,p_item_plug_id=>wwv_flow_imp.id(39921879824366843)
 ,p_item_source_plug_id=>wwv_flow_imp.id(39921879824366843)
-,p_source=>'HELD_BACK_WHY'
+,p_source=>'HELD_BACK_WHY_OTHER'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_TEXT_FIELD'
 ,p_cSize=>30
+,p_cMaxlength=>500
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
 ,p_is_persistent=>'N'
@@ -18122,12 +18131,18 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40424807653941535)
 ,p_name=>'P3_SCHOOL_TYPE_OTHER'
+,p_source_data_type=>'VARCHAR2'
 ,p_item_sequence=>190
 ,p_item_plug_id=>wwv_flow_imp.id(39921879824366843)
+,p_item_source_plug_id=>wwv_flow_imp.id(39921879824366843)
+,p_source=>'SCHOOL_TYPE_OTHER'
+,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_TEXT_FIELD'
 ,p_cSize=>30
+,p_cMaxlength=>500
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
+,p_is_persistent=>'N'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'N'
 ,p_attribute_04=>'TEXT'
@@ -18155,7 +18170,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_sequence=>220
 ,p_item_plug_id=>wwv_flow_imp.id(39922094037366845)
 ,p_display_as=>'NATIVE_HIDDEN'
-,p_attribute_01=>'Y'
+,p_attribute_01=>'N'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(41073060061548925)
@@ -18178,6 +18193,811 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_01=>'2'
 ,p_attribute_02=>'NONE'
 );
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41277301096962408)
+,p_validation_name=>'check unconscious quantity value'
+,p_validation_sequence=>10
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'if :P3_UNCONSCIOUS__1 = 1 and :P3_UNCONSCIOUS_QUANTITY is NULL then',
+'return False;',
+'else',
+'return True;',
+'end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing value'
+,p_associated_item=>wwv_flow_imp.id(39922564113366850)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41277572827962410)
+,p_validation_name=>'check unconscious severity age value'
+,p_validation_sequence=>20
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'if :P3_UNCONSCIOUS__1 = 1 and :P3_UNCONSCIOUS_SEVERITY_AGE is NULL then',
+'return False;',
+'else',
+'return True;',
+'end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40055596188713301)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41277662175962411)
+,p_validation_name=>'check unconscious cause value'
+,p_validation_sequence=>30
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'if :P3_UNCONSCIOUS__1 = 1 and :P3_UNCONSCIOUS_CAUSE is NULL then',
+'return False;',
+'else',
+'return True;',
+'end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40055674231713302)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41277721572962412)
+,p_validation_name=>'check unconscious cause other value'
+,p_validation_sequence=>40
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_UNCONSCIOUS__1 = 1 and :P3_UNCONSCIOUS_CAUSE = 7 and :P3_UNCONSCIOUS_CAUSE_OTHER is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40284811681719301)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41277867508962413)
+,p_validation_name=>'check unconscious duration 1 value'
+,p_validation_sequence=>50
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'if :P3_UNCONSCIOUS__1 = 1 and :P3_UNCONSCIOUS_duration_1 is NULL then',
+'return False;',
+'else',
+'return True;',
+'end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40055741605713303)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41277914350962414)
+,p_validation_name=>'check unconscious discussion value'
+,p_validation_sequence=>60
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_UNCONSCIOUS__1 = 1 and :P3_UNCONSCIOUS_duration_1 IN (''2'', ''3'') and :P3_UNCONSCIOUS_DISCUSSION is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40055841020713304)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41278066885962415)
+,p_validation_name=>'check clear memory duration value'
+,p_validation_sequence=>70
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'if :P3_UNCONSCIOUS__1 = 1 and :P3_clear_memory_duration is NULL then',
+'return False;',
+'else',
+'return True;',
+'end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40055961305713305)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41278126165962416)
+,p_validation_name=>'check hospital attendance value'
+,p_validation_sequence=>80
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'if :P3_UNCONSCIOUS__1 = 1 and :P3_hospital_attendance is NULL then',
+'return False;',
+'else',
+'return True;',
+'end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40056042184713306)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41278297787962417)
+,p_validation_name=>'check hospital attendance length value'
+,p_validation_sequence=>90
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_UNCONSCIOUS__1 = 1 and :P3_HOSPITAL_ATTENDANCE = 2 and :P3_HOSPITAL_ATTENDANCE_LENGTH is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40056168316713307)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41278388872962418)
+,p_validation_name=>'check hospital attendance paramedics value'
+,p_validation_sequence=>100
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_UNCONSCIOUS__1 = 1 and :P3_HOSPITAL_ATTENDANCE = 3 and :P3_HOSPITAL_ATTENDANCE_PARAMEDICS is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40056225202713308)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41278414494962419)
+,p_validation_name=>'check symptoms value'
+,p_validation_sequence=>110
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'if :P3_UNCONSCIOUS__1 = 1 and :P3_symptoms is NULL then',
+'return False;',
+'else',
+'return True;',
+'end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40056356265713309)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41278507647962420)
+,p_validation_name=>'check symptoms duration value'
+,p_validation_sequence=>120
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'if :P3_UNCONSCIOUS__1 = 1 and :P3_symptoms = 1 and :P3_SYMPTOMS_DURATION is NULL then',
+'return False;',
+'else',
+'return True;',
+'end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40056473356713310)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41278611414962421)
+,p_validation_name=>'check parkinsons value'
+,p_validation_sequence=>130
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'if :P3_NEURO_ILLNESS = 1 and :P3_PARKINSONS is NULL then',
+'return False;',
+'else',
+'return True;',
+'end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40057350237713319)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41278785860962422)
+,p_validation_name=>'check alzheimers value'
+,p_validation_sequence=>140
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'if :P3_NEURO_ILLNESS = 1 and :P3_alzheimers is NULL then',
+'return False;',
+'else',
+'return True;',
+'end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40057499577713320)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41278822086962423)
+,p_validation_name=>'check huntingtons value'
+,p_validation_sequence=>150
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'if :P3_NEURO_ILLNESS = 1 and :P3_huntingtons is NULL then',
+'return False;',
+'else',
+'return True;',
+'end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40057586384713321)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41278950361962424)
+,p_validation_name=>'check multiple sclerosis value'
+,p_validation_sequence=>160
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'if :P3_NEURO_ILLNESS = 1 and :P3_multiple_sclerosis is NULL then',
+'return False;',
+'else',
+'return True;',
+'end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40057674671713322)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41279044271962425)
+,p_validation_name=>'check epilepsy value'
+,p_validation_sequence=>170
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'if :P3_NEURO_ILLNESS = 1 and :P3_epilepsy is NULL then',
+'return False;',
+'else',
+'return True;',
+'end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40286651724719319)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41279151423962426)
+,p_validation_name=>'Check academic difficulties value'
+,p_validation_sequence=>180
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'if :P3_DIFFICULTY_LEARNING = 1 and :P3_ACADEMIC_DIFFICULTIES is NULL then',
+'return False;',
+'else',
+'return True;',
+'end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40058539818713331)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41279259276962427)
+,p_validation_name=>'Check support classes value'
+,p_validation_sequence=>190
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'if :P3_DIFFICULTY_LEARNING = 1 and :P3_support_classes is NULL then',
+'return False;',
+'else',
+'return True;',
+'end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40058638192713332)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41279329897962428)
+,p_validation_name=>'check diagnoser value'
+,p_validation_sequence=>200
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_DIAGNOSER is NULL and ',
+'     (:P3_LEARNING_DISABILITY_DYSXLEXIA = 1 or :P3_LEARNING_DISABILITY_WRITING = 1 or ',
+'      :P3_LEARNING_DISABILITY_MATH = 1 or :P3_LEARNING_DISABILITY_ATTENTION = 1) then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40059249729713338)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41279576321962430)
+,p_validation_name=>'check diagnoser other value'
+,p_validation_sequence=>210
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_DIAGNOSER_OTHER is NULL and :P3_DIAGNOSER = 4 and',
+'     (:P3_LEARNING_DISABILITY_DYSXLEXIA = 1 or :P3_LEARNING_DISABILITY_WRITING = 1 or ',
+'      :P3_LEARNING_DISABILITY_MATH = 1 or :P3_LEARNING_DISABILITY_ATTENTION = 1) then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40423614320941523)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41279605501962431)
+,p_validation_name=>'check when diagnosed value'
+,p_validation_sequence=>220
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_WHEN_DIAGNOSED is NULL and ',
+'     (:P3_LEARNING_DISABILITY_DYSXLEXIA = 1 or :P3_LEARNING_DISABILITY_WRITING = 1 or ',
+'      :P3_LEARNING_DISABILITY_MATH = 1 or :P3_LEARNING_DISABILITY_ATTENTION = 1) then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40059399910713339)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41279711022962432)
+,p_validation_name=>'check why diagnosed value'
+,p_validation_sequence=>230
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_WHY_DIAGNOSED is NULL and ',
+'     (:P3_LEARNING_DISABILITY_DYSXLEXIA = 1 or :P3_LEARNING_DISABILITY_WRITING = 1 or ',
+'      :P3_LEARNING_DISABILITY_MATH = 1 or :P3_LEARNING_DISABILITY_ATTENTION = 1) then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40059454530713340)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41279848859962433)
+,p_validation_name=>'check why diagnosed other value'
+,p_validation_sequence=>240
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_WHY_DIAGNOSED_OTHER is NULL and :P3_WHY_DIAGNOSED = 3 and ',
+'     (:P3_LEARNING_DISABILITY_DYSXLEXIA = 1 or :P3_LEARNING_DISABILITY_WRITING = 1 or ',
+'      :P3_LEARNING_DISABILITY_MATH = 1 or :P3_LEARNING_DISABILITY_ATTENTION = 1) then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40423984462941526)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41279949348962434)
+,p_validation_name=>'check held back why value'
+,p_validation_sequence=>250
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_HELD_BACK = 1 and :P3_HELD_BACK_WHY is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40060364889713349)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41280079828962435)
+,p_validation_name=>'check held back why other value'
+,p_validation_sequence=>260
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_HELD_BACK = 1 and :P3_HELD_BACK_WHY = 3 and :p3_held_back_why_other is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40424235890941529)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41280118025962436)
+,p_validation_name=>'check grade number value'
+,p_validation_sequence=>270
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_SKIP_GRADE = 1 and :P3_GRADE_NUMBER is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40060587811730501)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+end;
+/
+begin
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41280281044962437)
+,p_validation_name=>'check level of education last grade value'
+,p_validation_sequence=>280
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_LEVEL_OF_EDUCATION = 11 and :P3_LEVEL_OF_EDUCATION_LAST_GRADE is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40424672352941533)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41280374903962438)
+,p_validation_name=>'check level of education num equiv value'
+,p_validation_sequence=>290
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_LEVEL_OF_EDUCATION = 7 and :P3_LEVEL_OF_EDUCATION_NUM_EQUIV is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing value'
+,p_associated_item=>wwv_flow_imp.id(40424571341941532)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41280437134962439)
+,p_validation_name=>'check duration education value'
+,p_validation_sequence=>300
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_ATTENDING_SCHOOL = 1 and :P3_DURATION_EDUCATION is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40060967726730505)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41280597107962440)
+,p_validation_name=>'check school type value'
+,p_validation_sequence=>310
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_ATTENDING_SCHOOL = 1 and :P3_SCHOOL_TYPE is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40060816265730504)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41280650806962441)
+,p_validation_name=>'check school type other value'
+,p_validation_sequence=>320
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_ATTENDING_SCHOOL = 1 and :P3_SCHOOL_TYPE = 4 and :P3_SCHOOL_TYPE_OTHER is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40424807653941535)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41280755110962442)
+,p_validation_name=>'check narcan naloxone quantity value'
+,p_validation_sequence=>330
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_NARCAN_NALOXONE = 1 and :P3_NARCAN_NALOXONE_QUANTITY is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40035064671241225)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41280854561962443)
+,p_validation_name=>'check unconscious duration value'
+,p_validation_sequence=>340
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_UNCONSCIOUS = 1 and :P3_UNCONSCIOUS_DURATION is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40035878457241226)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41280960594962444)
+,p_validation_name=>'check side effects value'
+,p_validation_sequence=>350
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_UNCONSCIOUS = 1 and :P3_SIDE_EFFECTS is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40064820052730544)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41281056715962445)
+,p_validation_name=>'check side effects duration value'
+,p_validation_sequence=>360
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_UNCONSCIOUS = 1 and :P3_SIDE_EFFECTS = 1 and :P3_SIDE_EFFECTS_DURATION is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40036672311241226)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41281105550962446)
+,p_validation_name=>'check num overdose value'
+,p_validation_sequence=>370
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_OVERDOSE = 1 and :P3_NUM_OVERDOSE is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40032678453241223)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41281222997962447)
+,p_validation_name=>'check overdose opioids value'
+,p_validation_sequence=>380
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_OVERDOSE = 1 and :P3_OVERDOSE_OPIOIDS is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40031895035241223)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41281340231962448)
+,p_validation_name=>'check overdose sedatives value'
+,p_validation_sequence=>400
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_OVERDOSE = 1 and :P3_OVERDOSE_SEDATIVES is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing value'
+,p_associated_item=>wwv_flow_imp.id(40032244047241223)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41281408790962449)
+,p_validation_name=>'check most severe value'
+,p_validation_sequence=>410
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_num_OVERDOSE is not NULL and :P3_MOST_SEVERE is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40033077280241223)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41281553791962450)
+,p_validation_name=>'check type value'
+,p_validation_sequence=>420
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_num_OVERDOSE is not NULL and :P3_type is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40033407889241225)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41366807517298601)
+,p_validation_name=>'check ambulance value'
+,p_validation_sequence=>430
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_num_OVERDOSE is not NULL and :P3_ambulancE is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing value'
+,p_associated_item=>wwv_flow_imp.id(40033880548241225)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41366917726298602)
+,p_validation_name=>'check er hospital value'
+,p_validation_sequence=>440
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_num_OVERDOSE is not NULL and :P3_ER_HOSPITAL is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40034221956241225)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
+wwv_flow_imp_page.create_page_validation(
+ p_id=>wwv_flow_imp.id(41367024529298603)
+,p_validation_name=>'check narcan naloxone value'
+,p_validation_sequence=>450
+,p_validation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  if :P3_num_OVERDOSE is not NULL and :P3_NARCAN_NALOXONE is NULL then',
+'    return False;',
+'  else',
+'    return True;',
+'  end if;',
+'end;'))
+,p_validation2=>'PLSQL'
+,p_validation_type=>'FUNC_BODY_RETURNING_BOOLEAN'
+,p_error_message=>'Missing Value'
+,p_associated_item=>wwv_flow_imp.id(40034603845241225)
+,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
+);
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(40425566723941542)
 ,p_name=>'Display Other Expense'
@@ -18186,7 +19006,7 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_triggering_element=>'P3_UNCONSCIOUS_CAUSE'
 ,p_condition_element=>'P3_UNCONSCIOUS_CAUSE'
 ,p_triggering_condition_type=>'EQUALS'
-,p_triggering_expression=>'Other'
+,p_triggering_expression=>'7'
 ,p_bind_type=>'bind'
 ,p_execution_type=>'IMMEDIATE'
 ,p_bind_event_type=>'change'
@@ -18216,13 +19036,10 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_event_id=>wwv_flow_imp.id(40425566723941542)
 ,p_event_result=>'FALSE'
 ,p_action_sequence=>20
-,p_execute_on_page_init=>'Y'
-,p_action=>'NATIVE_SET_VALUE'
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_CLEAR'
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P3_UNCONSCIOUS_CAUSE_OTHER'
-,p_attribute_01=>'STATIC_ASSIGNMENT'
-,p_attribute_09=>'N'
-,p_wait_for_result=>'Y'
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(40425994729941546)
@@ -18262,13 +19079,10 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_event_id=>wwv_flow_imp.id(40425994729941546)
 ,p_event_result=>'FALSE'
 ,p_action_sequence=>20
-,p_execute_on_page_init=>'Y'
-,p_action=>'NATIVE_SET_VALUE'
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_CLEAR'
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P3_HOSPITAL_ATTENDANCE_LENGTH'
-,p_attribute_01=>'STATIC_ASSIGNMENT'
-,p_attribute_09=>'N'
-,p_wait_for_result=>'Y'
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(40426362108941550)
@@ -18344,13 +19158,10 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_event_id=>wwv_flow_imp.id(40511339535140206)
 ,p_event_result=>'FALSE'
 ,p_action_sequence=>10
-,p_execute_on_page_init=>'Y'
-,p_action=>'NATIVE_SET_VALUE'
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_CLEAR'
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P3_PARKINSONS,P3_ALZHEIMERS,P3_HUNTINGTONS,P3_MULTIPLE_SCLEROSIS,P3_EPILEPSY'
-,p_attribute_01=>'STATIC_ASSIGNMENT'
-,p_attribute_09=>'N'
-,p_wait_for_result=>'Y'
 );
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(40511665020140209)
@@ -18370,7 +19181,7 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_triggering_element=>'P3_DIAGNOSER'
 ,p_condition_element=>'P3_DIAGNOSER'
 ,p_triggering_condition_type=>'EQUALS'
-,p_triggering_expression=>'Other'
+,p_triggering_expression=>'4'
 ,p_bind_type=>'bind'
 ,p_execution_type=>'IMMEDIATE'
 ,p_bind_event_type=>'change'
@@ -18390,13 +19201,10 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_event_id=>wwv_flow_imp.id(40511720130140210)
 ,p_event_result=>'FALSE'
 ,p_action_sequence=>10
-,p_execute_on_page_init=>'Y'
-,p_action=>'NATIVE_SET_VALUE'
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_CLEAR'
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P3_DIAGNOSER_OTHER'
-,p_attribute_01=>'STATIC_ASSIGNMENT'
-,p_attribute_09=>'N'
-,p_wait_for_result=>'Y'
 );
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(40512073128140213)
@@ -18416,7 +19224,7 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_triggering_element=>'P3_WHY_DIAGNOSED'
 ,p_condition_element=>'P3_WHY_DIAGNOSED'
 ,p_triggering_condition_type=>'EQUALS'
-,p_triggering_expression=>'Other'
+,p_triggering_expression=>'3'
 ,p_bind_type=>'bind'
 ,p_execution_type=>'IMMEDIATE'
 ,p_bind_event_type=>'change'
@@ -18436,13 +19244,10 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_event_id=>wwv_flow_imp.id(40512164752140214)
 ,p_event_result=>'FALSE'
 ,p_action_sequence=>10
-,p_execute_on_page_init=>'Y'
-,p_action=>'NATIVE_SET_VALUE'
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_CLEAR'
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P3_WHY_DIAGNOSED_OTHER'
-,p_attribute_01=>'STATIC_ASSIGNMENT'
-,p_attribute_09=>'N'
-,p_wait_for_result=>'Y'
 );
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(40512454476140217)
@@ -18462,7 +19267,7 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_triggering_element=>'P3_HELD_BACK_WHY'
 ,p_condition_element=>'P3_HELD_BACK_WHY'
 ,p_triggering_condition_type=>'EQUALS'
-,p_triggering_expression=>'Other'
+,p_triggering_expression=>'3'
 ,p_bind_type=>'bind'
 ,p_execution_type=>'IMMEDIATE'
 ,p_bind_event_type=>'change'
@@ -18482,13 +19287,10 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_event_id=>wwv_flow_imp.id(40512644566140219)
 ,p_event_result=>'FALSE'
 ,p_action_sequence=>10
-,p_execute_on_page_init=>'Y'
-,p_action=>'NATIVE_SET_VALUE'
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_CLEAR'
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P3_HELD_BACK_WHY_OTHER'
-,p_attribute_01=>'STATIC_ASSIGNMENT'
-,p_attribute_09=>'N'
-,p_wait_for_result=>'Y'
 );
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(40512993365140222)
@@ -18508,7 +19310,7 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_triggering_element=>'P3_LEVEL_OF_EDUCATION'
 ,p_condition_element=>'P3_LEVEL_OF_EDUCATION'
 ,p_triggering_condition_type=>'EQUALS'
-,p_triggering_expression=>'Number of equivalent full-time years in college/university if not obtaining a degree'
+,p_triggering_expression=>'7'
 ,p_bind_type=>'bind'
 ,p_execution_type=>'IMMEDIATE'
 ,p_bind_event_type=>'change'
@@ -18528,13 +19330,10 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_event_id=>wwv_flow_imp.id(40513143841140224)
 ,p_event_result=>'FALSE'
 ,p_action_sequence=>10
-,p_execute_on_page_init=>'Y'
-,p_action=>'NATIVE_SET_VALUE'
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_CLEAR'
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P3_LEVEL_OF_EDUCATION_NUM_EQUIV'
-,p_attribute_01=>'STATIC_ASSIGNMENT'
-,p_attribute_09=>'N'
-,p_wait_for_result=>'Y'
 );
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(40513411720140227)
@@ -18554,7 +19353,7 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_triggering_element=>'P3_LEVEL_OF_EDUCATION'
 ,p_condition_element=>'P3_LEVEL_OF_EDUCATION'
 ,p_triggering_condition_type=>'EQUALS'
-,p_triggering_expression=>'Less than high school graduation'
+,p_triggering_expression=>'11'
 ,p_bind_type=>'bind'
 ,p_execution_type=>'IMMEDIATE'
 ,p_bind_event_type=>'change'
@@ -18574,13 +19373,10 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_event_id=>wwv_flow_imp.id(40513501315140228)
 ,p_event_result=>'FALSE'
 ,p_action_sequence=>10
-,p_execute_on_page_init=>'Y'
-,p_action=>'NATIVE_SET_VALUE'
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_CLEAR'
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P3_LEVEL_OF_EDUCATION_LAST_GRADE'
-,p_attribute_01=>'STATIC_ASSIGNMENT'
-,p_attribute_09=>'N'
-,p_wait_for_result=>'Y'
 );
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(40513885010140231)
@@ -18600,7 +19396,7 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_triggering_element=>'P3_SCHOOL_TYPE'
 ,p_condition_element=>'P3_SCHOOL_TYPE'
 ,p_triggering_condition_type=>'EQUALS'
-,p_triggering_expression=>'Other'
+,p_triggering_expression=>'4'
 ,p_bind_type=>'bind'
 ,p_execution_type=>'IMMEDIATE'
 ,p_bind_event_type=>'change'
@@ -18620,13 +19416,10 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_event_id=>wwv_flow_imp.id(40514156500140234)
 ,p_event_result=>'FALSE'
 ,p_action_sequence=>10
-,p_execute_on_page_init=>'Y'
-,p_action=>'NATIVE_SET_VALUE'
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_CLEAR'
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P3_SCHOOL_TYPE_OTHER'
-,p_attribute_01=>'STATIC_ASSIGNMENT'
-,p_attribute_09=>'N'
-,p_wait_for_result=>'Y'
 );
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(40514461856140237)
@@ -18671,21 +19464,15 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P3_UNCONSCIOUS_DURATION_QUESTION,P3_UNCONSCIOUS_DURATION,P3_SIDE_EFFECTS_QUESTION,P3_SIDE_EFFECTS,P3_SIDE_EFFECTS_DURATION_QUESTION,P3_SIDE_EFFECTS_DURATION'
 );
-end;
-/
-begin
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(41008463868038505)
 ,p_event_id=>wwv_flow_imp.id(41008141655038502)
 ,p_event_result=>'FALSE'
 ,p_action_sequence=>20
-,p_execute_on_page_init=>'Y'
-,p_action=>'NATIVE_SET_VALUE'
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_CLEAR'
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P3_UNCONSCIOUS_DURATION_QUESTION,P3_UNCONSCIOUS_DURATION,P3_SIDE_EFFECTS_QUESTION,P3_SIDE_EFFECTS,P3_SIDE_EFFECTS_DURATION_QUESTION,P3_SIDE_EFFECTS_DURATION'
-,p_attribute_01=>'STATIC_ASSIGNMENT'
-,p_attribute_09=>'N'
-,p_wait_for_result=>'Y'
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(41010104631038522)
@@ -18725,13 +19512,10 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_event_id=>wwv_flow_imp.id(41010104631038522)
 ,p_event_result=>'FALSE'
 ,p_action_sequence=>20
-,p_execute_on_page_init=>'Y'
-,p_action=>'NATIVE_SET_VALUE'
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_CLEAR'
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P3_ACADEMIC_DIFFICULTIES_QUESTION,P3_ACADEMIC_DIFFICULTIES,P3_SUPPORT_CLASSES_QUESTION,P3_SUPPORT_CLASSES'
-,p_attribute_01=>'STATIC_ASSIGNMENT'
-,p_attribute_09=>'N'
-,p_wait_for_result=>'Y'
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(41010538793038526)
@@ -18771,13 +19555,10 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_event_id=>wwv_flow_imp.id(41010538793038526)
 ,p_event_result=>'FALSE'
 ,p_action_sequence=>20
-,p_execute_on_page_init=>'Y'
-,p_action=>'NATIVE_SET_VALUE'
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_CLEAR'
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P3_HELD_BACK_WHY_QUESTION,P3_HELD_BACK_WHY'
-,p_attribute_01=>'STATIC_ASSIGNMENT'
-,p_attribute_09=>'N'
-,p_wait_for_result=>'Y'
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(41011536660038536)
@@ -18817,13 +19598,10 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_event_id=>wwv_flow_imp.id(41011536660038536)
 ,p_event_result=>'FALSE'
 ,p_action_sequence=>20
-,p_execute_on_page_init=>'Y'
-,p_action=>'NATIVE_SET_VALUE'
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_CLEAR'
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P3_GRADE_NUMBER'
-,p_attribute_01=>'STATIC_ASSIGNMENT'
-,p_attribute_09=>'N'
-,p_wait_for_result=>'Y'
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(41011901000038540)
@@ -18863,13 +19641,10 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_event_id=>wwv_flow_imp.id(41011901000038540)
 ,p_event_result=>'FALSE'
 ,p_action_sequence=>20
-,p_execute_on_page_init=>'Y'
-,p_action=>'NATIVE_SET_VALUE'
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_CLEAR'
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P3_DURATION_EDUCATION_INFO,P3_DURATION_EDUCATION'
-,p_attribute_01=>'STATIC_ASSIGNMENT'
-,p_attribute_09=>'N'
-,p_wait_for_result=>'Y'
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(41070892279548903)
@@ -18884,6 +19659,9 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_execution_type=>'IMMEDIATE'
 ,p_bind_event_type=>'change'
 );
+end;
+/
+begin
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(41070954931548904)
 ,p_event_id=>wwv_flow_imp.id(41070892279548903)
@@ -19100,52 +19878,6 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_attribute_01=>'alert(''ok'');'
 );
 wwv_flow_imp_page.create_page_da_event(
- p_id=>wwv_flow_imp.id(41072657143548921)
-,p_name=>'Display ''skip to 7'''
-,p_event_sequence=>270
-,p_triggering_element_type=>'ITEM'
-,p_triggering_element=>'P3_UNCONSCIOUS_1_1'
-,p_condition_element=>'P3_UNCONSCIOUS_1_1'
-,p_triggering_condition_type=>'EQUALS'
-,p_triggering_expression=>'1'
-,p_bind_type=>'bind'
-,p_execution_type=>'IMMEDIATE'
-,p_bind_event_type=>'change'
-);
-wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(41072714756548922)
-,p_event_id=>wwv_flow_imp.id(41072657143548921)
-,p_event_result=>'TRUE'
-,p_action_sequence=>10
-,p_execute_on_page_init=>'Y'
-,p_action=>'NATIVE_SHOW'
-,p_affected_elements_type=>'ITEM'
-,p_affected_elements=>'P3_UNCONSCIOUS_QUANTITY'
-);
-wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(41072858341548923)
-,p_event_id=>wwv_flow_imp.id(41072657143548921)
-,p_event_result=>'FALSE'
-,p_action_sequence=>10
-,p_execute_on_page_init=>'Y'
-,p_action=>'NATIVE_HIDE'
-,p_affected_elements_type=>'ITEM'
-,p_affected_elements=>'P3_UNCONSCIOUS_QUANTITY'
-);
-wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(41072996082548924)
-,p_event_id=>wwv_flow_imp.id(41072657143548921)
-,p_event_result=>'FALSE'
-,p_action_sequence=>20
-,p_execute_on_page_init=>'Y'
-,p_action=>'NATIVE_SET_VALUE'
-,p_affected_elements_type=>'ITEM'
-,p_affected_elements=>'P3_UNCONSCIOUS_QUANTITY'
-,p_attribute_01=>'STATIC_ASSIGNMENT'
-,p_attribute_09=>'N'
-,p_wait_for_result=>'Y'
-);
-wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(41073145954548926)
 ,p_name=>'Display Question 6'
 ,p_event_sequence=>270
@@ -19185,14 +19917,11 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_event_id=>wwv_flow_imp.id(41073145954548926)
 ,p_event_result=>'FALSE'
 ,p_action_sequence=>20
-,p_execute_on_page_init=>'Y'
-,p_action=>'NATIVE_SET_VALUE'
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_CLEAR'
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P3_UNCONSCIOUS_QUANTITY,P3_UNCONSCIOUS_SEVERITY_INFO,P3_UNCONSCIOUS_SEVERITY_AGE,P3_UNCONSCIOUS_CAUSE_QUESTION,P3_UNCONSCIOUS_CAUSE,P3_UNCONSCIOUS_DURATION_1_QUESTION,P3_UNCONSCIOUS_DURATION_1,P3_UNCONSCIOUS_DISCUSSION_QUESTION,P3_UNCONSCIOUS_DISCUSS'
 ||'ION,P3_CLEAR_MEMORY_DURATION_QUESTION,P3_CLEAR_MEMORY_DURATION,P3_HOSPITAL_ATTENDANCE_QUESTION,P3_HOSPITAL_ATTENDANCE,P3_SYMPTOMS_QUESTION,P3_SYMPTOMS,P3_SYMPTOMS_DURATION_QUESTION,P3_SYMPTOMS_DURATION'
-,p_attribute_01=>'STATIC_ASSIGNMENT'
-,p_attribute_09=>'N'
-,p_wait_for_result=>'Y'
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(40045146109241234)
