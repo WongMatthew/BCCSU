@@ -28,7 +28,7 @@ prompt APPLICATION 120 - BCCSU
 -- Application Export:
 --   Application:     120
 --   Name:            BCCSU
---   Date and Time:   09:40 Monday July 17, 2023
+--   Date and Time:   13:50 Monday July 17, 2023
 --   Exported By:     MWONG
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -112,7 +112,7 @@ wwv_flow_imp.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'BCCSU'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230717093923'
+,p_last_upd_yyyymmddhh24miss=>'20230717132604'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>4
 ,p_print_server_type=>'INSTANCE'
@@ -15956,7 +15956,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230717093923'
+,p_last_upd_yyyymmddhh24miss=>'20230717132604'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(40029696306241200)
@@ -16229,7 +16229,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_NUMBER_FIELD'
 ,p_cSize=>30
-,p_grid_label_column_span=>0
+,p_grid_label_column_span=>4
 ,p_field_template=>wwv_flow_imp.id(36486651316850229)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--large'
 ,p_is_persistent=>'N'
@@ -18689,7 +18689,7 @@ wwv_flow_imp_page.create_page_da_action(
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(41010104631038522)
-,p_name=>'Display Skip to 9'
+,p_name=>'Display ''skip to 9'''
 ,p_event_sequence=>140
 ,p_triggering_element_type=>'ITEM'
 ,p_triggering_element=>'P3_DIFFICULTY_LEARNING'
@@ -19147,7 +19147,7 @@ wwv_flow_imp_page.create_page_da_action(
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(41073145954548926)
-,p_name=>'display question 6'
+,p_name=>'Display Question 6'
 ,p_event_sequence=>270
 ,p_triggering_element_type=>'ITEM'
 ,p_triggering_element=>'P3_UNCONSCIOUS__1'
@@ -19277,11 +19277,15 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_sequence=>70
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_PLSQL'
-,p_process_name=>'Success Message'
+,p_process_name=>'custom message'
 ,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'begin',
-'apex_application.g_print_success_message :=''<span style="color:#ffffff">Successfully Submitted</span>'';',
-'end;'))
+'BEGIN',
+'  IF apex_application.g_request = ''CREATE'' OR apex_application.g_request = ''SAVE'' THEN',
+'    apex_application.g_print_success_message := ''<span style="color:#ffffff">Successfully Submitted</span>'';',
+'  ELSIF apex_application.g_request = ''DELETE'' THEN',
+'    apex_application.g_print_success_message := ''<span style="color:#ffffff">Successfully Deleted</span>'';',
+'  END IF;',
+'END;'))
 ,p_process_clob_language=>'PLSQL'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 );
@@ -19528,7 +19532,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'MWONG'
-,p_last_upd_yyyymmddhh24miss=>'20230714164638'
+,p_last_upd_yyyymmddhh24miss=>'20230717121932'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(40813709092228421)
@@ -19537,7 +19541,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_template=>wwv_flow_imp.id(36424165183850195)
 ,p_plug_display_sequence=>10
 ,p_plug_grid_column_span=>3
-,p_plug_display_column=>4
+,p_plug_display_column=>5
 ,p_query_type=>'TABLE'
 ,p_query_table=>'PARTICIPANT'
 ,p_include_rowid_column=>false
@@ -19621,47 +19625,47 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_template_id=>wwv_flow_imp.id(36488526615850231)
 ,p_button_image_alt=>'Delete'
 ,p_button_position=>'DELETE'
-,p_confirm_message=>'Successfully Deleted'
-,p_confirm_style=>'success'
+,p_confirm_message=>'&APP_TEXT$DELETE_MSG!RAW.'
+,p_confirm_style=>'danger'
 ,p_button_condition=>'P13_DBID'
 ,p_button_condition_type=>'ITEM_IS_NOT_NULL'
 ,p_database_action=>'DELETE'
 );
 wwv_flow_imp_page.create_page_branch(
- p_id=>wwv_flow_imp.id(40819222815228432)
-,p_branch_name=>'Go To Page 13'
-,p_branch_action=>'f?p=&APP_ID.:13:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
-,p_branch_point=>'AFTER_PROCESSING'
-,p_branch_type=>'REDIRECT_URL'
-,p_branch_when_button_id=>wwv_flow_imp.id(40818976826228432)
-,p_branch_sequence=>1
-);
-wwv_flow_imp_page.create_page_branch(
- p_id=>wwv_flow_imp.id(41074007842548935)
-,p_branch_name=>'Go To Page 13'
-,p_branch_action=>'f?p=&APP_ID.:13:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
-,p_branch_point=>'AFTER_PROCESSING'
-,p_branch_type=>'REDIRECT_URL'
-,p_branch_when_button_id=>wwv_flow_imp.id(40818598437228432)
-,p_branch_sequence=>11
-);
-wwv_flow_imp_page.create_page_branch(
  p_id=>wwv_flow_imp.id(41074266386548937)
+,p_branch_name=>'Go To Page 12'
+,p_branch_action=>'f?p=&APP_ID.:12:&SESSION.::&DEBUG.::P13_DBID:&success_msg=#SUCCESS_MSG#'
+,p_branch_point=>'AFTER_PROCESSING'
+,p_branch_type=>'REDIRECT_URL'
+,p_branch_when_button_id=>wwv_flow_imp.id(40818101012228431)
+,p_branch_sequence=>21
+);
+wwv_flow_imp_page.create_page_branch(
+ p_id=>wwv_flow_imp.id(41244245995602909)
 ,p_branch_name=>'Go To Page 12'
 ,p_branch_action=>'f?p=&APP_ID.:12:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
 ,p_branch_point=>'AFTER_PROCESSING'
 ,p_branch_type=>'REDIRECT_URL'
 ,p_branch_when_button_id=>wwv_flow_imp.id(40817549596228431)
-,p_branch_sequence=>21
+,p_branch_sequence=>31
 );
 wwv_flow_imp_page.create_page_branch(
- p_id=>wwv_flow_imp.id(41074388921548938)
-,p_branch_name=>'Go To Page 12'
-,p_branch_action=>'f?p=&APP_ID.:12:&SESSION.::&DEBUG.:CR,:P13_DBID:&success_msg=#SUCCESS_MSG#'
+ p_id=>wwv_flow_imp.id(41244312127602910)
+,p_branch_name=>'Go To Page 13'
+,p_branch_action=>'f?p=&APP_ID.:13:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
 ,p_branch_point=>'AFTER_PROCESSING'
 ,p_branch_type=>'REDIRECT_URL'
-,p_branch_when_button_id=>wwv_flow_imp.id(40818101012228431)
-,p_branch_sequence=>31
+,p_branch_when_button_id=>wwv_flow_imp.id(40818976826228432)
+,p_branch_sequence=>41
+);
+wwv_flow_imp_page.create_page_branch(
+ p_id=>wwv_flow_imp.id(41244439944602911)
+,p_branch_name=>'Go To Page 13'
+,p_branch_action=>'f?p=&APP_ID.:13:&SESSION.::&DEBUG.::P13_DBID:&P13_DBID.&success_msg=#SUCCESS_MSG#'
+,p_branch_point=>'AFTER_PROCESSING'
+,p_branch_type=>'REDIRECT_URL'
+,p_branch_when_button_id=>wwv_flow_imp.id(40818598437228432)
+,p_branch_sequence=>51
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(40814011999228423)
@@ -19775,9 +19779,14 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_type=>'NATIVE_PLSQL'
 ,p_process_name=>'custom message'
 ,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'begin',
-'apex_application.g_print_success_message :=''<span style="color:#ffffff">Successfully Submitted</span>'';',
-'end;'))
+'BEGIN',
+'  IF apex_application.g_request = ''CREATE'' OR apex_application.g_request = ''SAVE'' THEN',
+'    apex_application.g_print_success_message := ''<span style="color:#ffffff">Successfully Submitted</span>'';',
+'  ELSIF apex_application.g_request = ''DELETE'' THEN',
+'    apex_application.g_print_success_message := ''<span style="color:#ffffff">Successfully Deleted</span>'';',
+'  END IF;',
+'END;',
+''))
 ,p_process_clob_language=>'PLSQL'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 );
